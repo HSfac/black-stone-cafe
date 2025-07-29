@@ -86,7 +86,7 @@ export type Database = {
           menu_id: string
           quantity: number
           unit_price: number
-          options: any | null
+          options: Record<string, unknown> | null
           created_at: string
         }
         Insert: {
@@ -95,7 +95,7 @@ export type Database = {
           menu_id: string
           quantity: number
           unit_price: number
-          options?: any | null
+          options?: Record<string, unknown> | null
           created_at?: string
         }
         Update: {
@@ -104,7 +104,7 @@ export type Database = {
           menu_id?: string
           quantity?: number
           unit_price?: number
-          options?: any | null
+          options?: Record<string, unknown> | null
           created_at?: string
         }
       }

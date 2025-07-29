@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { Phone, Mail, MessageCircle, Clock, Star, Send, ChevronDown, ChevronUp } from 'lucide-react'
+import { Phone, Mail, MessageCircle, Star, Send, ChevronDown, ChevronUp } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import Input from '@/components/ui/Input'

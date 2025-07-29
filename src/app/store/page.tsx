@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { MapPin, Clock, Phone, Wifi, Car, Coffee, Users } from 'lucide-react'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'

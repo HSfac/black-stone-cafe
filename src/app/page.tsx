@@ -248,7 +248,7 @@ export default function HomePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {popularMenus.map((menu, index) => (
+            {popularMenus.map((menu) => (
               <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-black-primary/20">
                 <div className="aspect-square relative overflow-hidden">
                   {/* 배지 */}
@@ -338,7 +338,7 @@ export default function HomePage() {
                 <Card.Body className="p-10">
                   <Quote className="h-12 w-12 text-white-primary mb-6" />
                   <p className="text-xl text-gray-200 leading-relaxed mb-8">
-                    "{testimonial.content}"
+                    &ldquo;{testimonial.content}&rdquo;
                   </p>
                   <div className="flex items-center">
                     <Image
@@ -391,8 +391,8 @@ export default function HomePage() {
                   '숙련된 바리스타의 정성스런 핸드드립',
                   '미니멀한 블랙 앤 화이트 인테리어',
                   '프리미엄 창업 시스템 제공'
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-4">
+                                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-4">
                     <div className="w-8 h-8 bg-black-primary rounded-full flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="h-5 w-5 text-white-primary" />
                     </div>
@@ -454,7 +454,7 @@ export default function HomePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {news.map((item, index) => (
+            {news.map((item) => (
               <Card key={item.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-black-primary/20">
                 <div className="aspect-[16/9] relative overflow-hidden">
                   {/* 카테고리 배지 */}

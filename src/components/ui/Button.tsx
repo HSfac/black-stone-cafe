@@ -41,9 +41,10 @@ const Button: React.FC<ButtonProps> = ({
   )
 
   if (asChild) {
-    return React.cloneElement(children as React.ReactElement, {
-      className: classes,
-      ...props
+    const child = children as React.ReactElement<Record<string, unknown>>
+    return React.cloneElement(child, {
+      className: cn(child.props.className as string, classes),
+      ...(props as Record<string, unknown>)
     })
   }
 

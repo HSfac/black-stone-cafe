@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Search, Filter, Coffee, Heart } from 'lucide-react'
+import Link from 'next/link'
+import { Search, Coffee, Heart } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { formatPrice, getCategoryText } from '@/lib/utils'
-import { supabase } from '@/lib/supabase'
 
 // 임시 메뉴 데이터 (실제로는 Supabase에서 가져옴)
 const menuData = [
@@ -191,11 +191,11 @@ interface MenuItem {
 }
 
 export default function MenuPage() {
-  const [menus, setMenus] = useState<MenuItem[]>(menuData)
+  const [menus] = useState<MenuItem[]>(menuData)
   const [filteredMenus, setFilteredMenus] = useState<MenuItem[]>(menuData)
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
 
   // 필터링 로직
   useEffect(() => {

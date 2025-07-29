@@ -1,9 +1,21 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Calendar, Tag, Clock, Coffee } from 'lucide-react'
+import { Calendar, Tag, Coffee } from 'lucide-react'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
+
+// 뉴스 타입 정의
+interface NewsItem {
+  id: number
+  title: string
+  summary: string
+  content: string
+  date: string
+  category: string
+  image: string
+  featured: boolean
+}
 
 // 뉴스 데이터
 const newsData = [
@@ -98,7 +110,7 @@ const getCategoryColor = (categoryId: string) => {
 
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [selectedNews, setSelectedNews] = useState<any>(null)
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
 
   const filteredNews = selectedCategory === 'all' 
     ? newsData 
