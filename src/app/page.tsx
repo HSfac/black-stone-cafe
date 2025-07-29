@@ -128,7 +128,7 @@ export default function HomePage() {
         
         <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
           <div className="mb-12">
-            <div className="inline-block px-8 py-3 border border-white-primary/30 rounded-full text-white-primary/90 text-sm font-medium mb-8 backdrop-blur-sm">
+            <div className="inline-block px-8 py-3 border border-white-primary/50 rounded-full text-white-primary text-sm font-medium mb-8 backdrop-blur-sm">
               Premium Coffee Experience
             </div>
           </div>
@@ -158,10 +158,10 @@ export default function HomePage() {
           
           {/* 스크롤 인디케이터 */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="flex flex-col items-center text-white-primary/80">
+            <div className="flex flex-col items-center text-white-primary">
               <span className="text-sm mb-3 font-medium">더 많은 정보 보기</span>
-              <div className="w-6 h-10 border-2 border-white-primary/40 rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-white-primary/60 rounded-full mt-2 animate-bounce" />
+              <div className="w-6 h-10 border-2 border-white-primary/60 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-white-primary/80 rounded-full mt-2 animate-bounce" />
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
               왜 블랙스톤일까요?
             </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
               성공적인 카페 창업을 위한 모든 것이 준비되어 있습니다
             </p>
           </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
                   <h3 className="text-2xl font-bold mb-6 text-white-primary">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-lg">
+                  <p className="text-gray-200 leading-relaxed text-lg">
                     {feature.description}
                   </p>
                 </div>
@@ -327,7 +327,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
               성공 스토리
             </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+            <p className="text-2xl text-gray-200 max-w-4xl mx-auto">
               블랙스톤과 함께 성공한 점주님들의 생생한 후기입니다
             </p>
           </div>
@@ -337,7 +337,7 @@ export default function HomePage() {
               <Card key={testimonial.id} className="bg-white-primary/5 border border-white-primary/10 hover:border-white-primary/20 transition-all duration-300">
                 <Card.Body className="p-10">
                   <Quote className="h-12 w-12 text-white-primary mb-6" />
-                  <p className="text-xl text-gray-200 leading-relaxed mb-8">
+                  <p className="text-xl text-gray-100 leading-relaxed mb-8">
                     &ldquo;{testimonial.content}&rdquo;
                   </p>
                   <div className="flex items-center">
@@ -350,7 +350,7 @@ export default function HomePage() {
                     />
                     <div>
                       <h4 className="text-lg font-semibold text-white-primary">{testimonial.name}</h4>
-                      <p className="text-gray-400">{testimonial.role}</p>
+                      <p className="text-gray-300">{testimonial.role}</p>
                       <div className="flex items-center mt-2">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="h-4 w-4 text-white-primary fill-current" />
@@ -478,8 +478,8 @@ export default function HomePage() {
                 
                 <Card.Body className="p-10 bg-white-primary">
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-gray-500 font-semibold">{item.date}</span>
-                    <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-black-primary group-hover:translate-x-1 transition-all duration-300" />
+                    <span className="text-gray-600 font-semibold">{item.date}</span>
+                    <ArrowRight className="h-5 w-5 text-gray-500 group-hover:text-black-primary group-hover:translate-x-1 transition-all duration-300" />
                   </div>
                   <h3 className="text-2xl font-bold text-black-primary mb-6 group-hover:text-gray-700 transition-colors duration-300">
                     {item.title}
@@ -517,7 +517,7 @@ export default function HomePage() {
             <span className="block">함께하세요</span>
           </h2>
           
-          <p className="text-2xl md:text-3xl text-gray-300 mb-16 leading-relaxed max-w-5xl mx-auto">
+          <p className="text-2xl md:text-3xl text-gray-200 mb-16 leading-relaxed max-w-5xl mx-auto">
             검증된 브랜드, 체계적인 시스템으로<br />
             <span className="text-white-primary font-bold">성공적인 카페 창업을 시작해보세요</span>
           </p>
