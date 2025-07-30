@@ -1,4 +1,4 @@
-ㅊ'use client'
+'use client'
 
 import React, { useState } from 'react'
 import { Calendar, Tag, Coffee } from 'lucide-react'
