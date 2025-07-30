@@ -32,12 +32,12 @@ const galleryImages = [
 
 export default function StorePage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen bg-white">
       {/* 헤더 섹션 */}
-      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="relative py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+            <div className="inline-block px-8 py-3 border border-white/50 rounded-full text-white text-sm font-medium mb-8 backdrop-blur-sm">
               Store Information
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function StorePage() {
             매장 정보
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             블랙 앤 화이트의 세련된 공간에서 완벽한 커피를 경험해보세요
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function StorePage() {
         {/* 매장 기본 정보 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <div>
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl font-bold text-black mb-8 font-serif-kr">
               {storeInfo.name}
             </h2>
             

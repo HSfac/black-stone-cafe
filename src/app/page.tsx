@@ -43,7 +43,7 @@ const popularMenus = [
   {
     id: 1,
     name: '시그니처 아메리카노',
-    description: '블랙스톤만의 특별한 블렌드로 만든 진한 아메리카노. 깊은 풍미와 균형잡힌 바디감이 특징입니다.',
+    description: 'Black Stone만의 특별한 블렌드로 만든 진한 아메리카노. 깊은 풍미와 균형잡힌 바디감이 특징입니다.',
     price: 4500,
     image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop',
     rating: 4.8,
@@ -109,7 +109,7 @@ const latestNews = [
   },
   {
     id: 2,
-    title: '블랙스톤 카페 리뉴얼 오픈',
+    title: 'Black Stone 카페 리뉴얼 오픈',
     summary: '더욱 세련되고 편안한 공간으로 새롭게 단장',
     date: '2024.03.10',
     category: '매장소식',
@@ -127,38 +127,53 @@ const latestNews = [
 
 export default function HomePage() {
   return (
-    <div className="bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
-      {/* 히어로 섹션 - 기본이 블랙, 라이트모드에서 화이트 */}
-      <section className="relative min-h-screen flex items-center justify-center bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+    <div className="bg-white text-black">
+      {/* 히어로 섹션 */}
+      <section className="relative min-h-screen flex items-center justify-center bg-black text-white pt-32">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?w=1920&h=1080&fit=crop"
-            alt="블랙스톤 카페 인테리어"
+            alt="Black Stone 카페 인테리어"
             fill
             className="object-cover opacity-40"
             priority
           />
-          <div className="absolute inset-0 bg-black/60 dark:bg-white/60" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
         
         <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
-          <div className="mb-12">
-            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+          <div className="mb-8">
+            <div className="inline-block px-8 py-3 border border-white/50 rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
               Premium Coffee Experience
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-12 font-serif-kr leading-none text-white dark:text-black transition-colors duration-300">
-            블랙스톤
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-10 leading-none text-white tracking-wide">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="flex space-x-4">
+                <span className="inline-block opacity-0 animate-stone-drop" style={{ animationDelay: '0.2s' }}>B</span>
+                <span className="inline-block opacity-0 animate-stone-drop" style={{ animationDelay: '0.3s' }}>L</span>
+                <span className="inline-block opacity-0 animate-stone-drop" style={{ animationDelay: '0.4s' }}>A</span>
+                <span className="inline-block opacity-0 animate-stone-drop" style={{ animationDelay: '0.5s' }}>C</span>
+                <span className="inline-block opacity-0 animate-stone-drop" style={{ animationDelay: '0.6s' }}>K</span>
+              </div>
+              <div className="flex space-x-4">
+                <span className="inline-block opacity-0 animate-stone-bounce" style={{ animationDelay: '0.8s' }}>S</span>
+                <span className="inline-block opacity-0 animate-stone-bounce" style={{ animationDelay: '0.9s' }}>T</span>
+                <span className="inline-block opacity-0 animate-stone-bounce" style={{ animationDelay: '1.0s' }}>O</span>
+                <span className="inline-block opacity-0 animate-stone-bounce" style={{ animationDelay: '1.1s' }}>N</span>
+                <span className="inline-block opacity-0 animate-stone-bounce" style={{ animationDelay: '1.2s' }}>E</span>
+              </div>
+            </div>
           </h1>
           
-          <p className="text-xl md:text-3xl lg:text-4xl mb-16 text-gray-200 dark:text-gray-700 leading-relaxed max-w-5xl mx-auto font-light transition-colors duration-300">
+          <p className="text-xl md:text-3xl lg:text-4xl mb-12 text-gray-200 leading-relaxed max-w-5xl mx-auto font-light">
             <span className="block mb-4">최고급 원두로 만든 완벽한 커피를</span>
-            <span className="block text-white dark:text-black font-medium transition-colors duration-300">블랙 앤 화이트의 세련된 공간에서</span>
+            <span className="block text-white font-medium">블랙 앤 화이트의 세련된 공간에서</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <Button size="lg" variant="secondary" asChild className="group">
               <Link href="/menu" className="flex items-center">
                 메뉴 둘러보기
@@ -173,7 +188,7 @@ export default function HomePage() {
           </div>
           
           {/* 스크롤 인디케이터 */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div className="flex flex-col items-center text-white dark:text-black transition-colors duration-300">
               <span className="text-sm mb-3 font-medium">더 많은 정보 보기</span>
               <div className="w-6 h-10 border-2 border-white/60 dark:border-black/60 rounded-full flex justify-center transition-colors duration-300">
@@ -185,14 +200,14 @@ export default function HomePage() {
       </section>
 
       {/* 브랜드 통계 섹션 */}
-      <section className="py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-32 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
               검증된 브랜드 파워
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
-              전국 매장 운영 데이터로 입증된 블랙스톤의 성공 스토리
+              전국 매장 운영 데이터로 입증된 Black Stone의 성공 스토리
             </p>
           </div>
           
@@ -221,7 +236,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
-              왜 블랙스톤일까요?
+              왜 Black Stone일까요?
             </h2>
             <p className="text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
               성공적인 카페 창업을 위한 모든 것이 준비되어 있습니다
@@ -259,7 +274,7 @@ export default function HomePage() {
               고객들이 사랑하는 메뉴
             </h2>
             <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
-              블랙스톤의 시그니처 메뉴로 특별한 맛의 경험을 선사합니다
+              Black Stone의 시그니처 메뉴로 특별한 맛의 경험을 선사합니다
             </p>
           </div>
           
@@ -333,7 +348,7 @@ export default function HomePage() {
               고객들의 생생한 후기
             </h2>
             <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
-              블랙스톤을 경험한 고객들의 진솔한 이야기를 들어보세요
+              Black Stone을 경험한 고객들의 진솔한 이야기를 들어보세요
             </p>
           </div>
           
@@ -417,7 +432,7 @@ export default function HomePage() {
               <div className="aspect-square relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop"
-                  alt="블랙스톤 카페 매장 인테리어"
+                  alt="Black Stone 카페 매장 인테리어"
                   fill
                   className="object-cover"
                 />
@@ -448,7 +463,7 @@ export default function HomePage() {
               최신 소식
             </h2>
             <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
-              블랙스톤의 새로운 소식과 이벤트를 확인해보세요
+              Black Stone의 새로운 소식과 이벤트를 확인해보세요
             </p>
           </div>
           

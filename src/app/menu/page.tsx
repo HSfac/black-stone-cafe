@@ -157,12 +157,12 @@ export default function MenuPage() {
   }, [selectedCategory, searchTerm])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen bg-white">
       {/* 헤더 섹션 */}
-      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="relative py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+            <div className="inline-block px-8 py-3 border border-white/50 rounded-full text-white text-sm font-medium mb-8 backdrop-blur-sm">
               Menu Collection
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function MenuPage() {
             우리의 메뉴
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             최고급 원두로 만든 특별한 커피와 디저트를 만나보세요
           </p>
         </div>
@@ -184,13 +184,13 @@ export default function MenuPage() {
             {/* 검색 */}
             <div className="flex-1 max-w-md">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500 transition-colors duration-300" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <Input
                   type="text"
                   placeholder="메뉴를 검색해보세요..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 transition-colors duration-300"
+                  className="pl-12 bg-gray-50 border-gray-200"
                 />
               </div>
             </div>
@@ -203,8 +203,8 @@ export default function MenuPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                     selectedCategory === category.id
-                      ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                      ? 'bg-black text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   <category.icon className="h-4 w-4" />
@@ -218,10 +218,10 @@ export default function MenuPage() {
         {/* 메뉴 그리드 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {filteredMenus.map((menu) => (
-            <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-              <div className="aspect-square relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+            <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
+              <div className="aspect-square relative overflow-hidden bg-gray-200">
                 {/* 임시 이미지 대신 그라데이션과 아이콘 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
                   <Coffee className="h-16 w-16 text-white opacity-60" />
                 </div>
                 
@@ -229,27 +229,27 @@ export default function MenuPage() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                 
                 {/* 찜하기 버튼 */}
-                <button className="absolute top-4 right-4 w-10 h-10 bg-white/90 dark:bg-gray-800/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
-                  <Heart className="h-5 w-5 text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors duration-300" />
+                <button className="absolute top-4 right-4 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
+                  <Heart className="h-5 w-5 text-gray-600 hover:text-red-500" />
                 </button>
               </div>
               
-              <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+              <Card.Body className="p-6 bg-white">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-black dark:text-white transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-black">
                     {menu.name}
                   </h3>
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full transition-colors duration-300">
+                  <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full">
                     {getCategoryText(menu.category)}
                   </span>
                 </div>
                 
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed transition-colors duration-300">
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {menu.description}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-black dark:text-white font-serif-kr transition-colors duration-300">
+                  <span className="text-2xl font-bold text-black font-serif-kr">
                     {formatPrice(menu.price)}
                   </span>
                   <Button 
@@ -268,22 +268,22 @@ export default function MenuPage() {
         {/* 결과 없음 메시지 */}
         {filteredMenus.length === 0 && (
           <div className="text-center py-16">
-            <Coffee className="h-16 w-16 text-gray-400 dark:text-gray-600 mx-auto mb-4 transition-colors duration-300" />
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
+            <Coffee className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
               검색 결과가 없습니다
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
+            <p className="text-gray-600">
               다른 키워드로 검색해보세요
             </p>
           </div>
         )}
 
         {/* CTA 섹션 */}
-        <div className="text-center bg-gray-50 dark:bg-gray-900 rounded-3xl p-16 transition-colors duration-300">
-          <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+        <div className="text-center bg-gray-50 rounded-3xl p-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 font-serif-kr">
             특별한 주문이 필요하신가요?
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto transition-colors duration-300">
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             단체 주문이나 특별한 요청사항이 있으시면 언제든 연락해주세요
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

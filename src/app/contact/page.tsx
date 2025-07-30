@@ -138,9 +138,9 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen bg-white">
       {/* 헤더 섹션 */}
-      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="relative py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
             <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
