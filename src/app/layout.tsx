@@ -77,7 +77,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans-kr antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+      <body className="font-sans-kr antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 min-h-screen">
         <ThemeProvider>
           <div className="min-h-screen flex flex-col">
             <Header />

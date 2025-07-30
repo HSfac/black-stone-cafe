@@ -13,40 +13,29 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // 기본 테마를 다크로 변경
   const [theme, setTheme] = useState<Theme>('dark')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     
-    // 로컬스토리지에서 테마 가져오기 (기본값은 다크)
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme === 'light') {
-      setTheme('light')
-      applyTheme('light')
-    } else {
-      setTheme('dark')
-      applyTheme('dark')
-    }
-  }, [])
-
-  const applyTheme = (newTheme: Theme) => {
+    // layout.tsx의 스크립트에서 이미 HTML 클래스를 적용했으므로
+    // 현재 상태만 읽어와서 동기화
     const html = document.documentElement
-    
-    // 모든 클래스 제거 후 새 테마 적용
-    html.classList.remove('light', 'dark')
-    html.classList.add(newTheme)
-    
-    console.log(`테마 적용: ${newTheme}, HTML 클래스:`, html.className)
-  }
+    const currentTheme = html.classList.contains('light') ? 'light' : 'dark'
+    setTheme(currentTheme)
+  }, [])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
-    console.log(`테마 전환: ${theme} → ${newTheme}`)
+    const html = document.documentElement
     
+    // HTML 클래스 업데이트
+    html.classList.remove('light', 'dark')
+    html.classList.add(newTheme)
+    
+    // 상태 업데이트
     setTheme(newTheme)
-    applyTheme(newTheme)
     
     // 로컬스토리지에 저장
     localStorage.setItem('theme', newTheme)
