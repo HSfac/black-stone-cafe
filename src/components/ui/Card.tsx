@@ -31,8 +31,9 @@ const Card: React.FC<CardProps> & {
   return (
     <div
       className={cn(
-        "bg-white-primary border border-gray-200 shadow transition-all duration-normal",
-        hover && "hover:shadow-card-hover hover:-translate-y-1",
+        "bg-white-primary dark:bg-black-primary border border-gray-200 dark:border-gray-700 shadow transition-all duration-normal",
+        "dark:shadow-xl dark:shadow-white-primary/5",
+        hover && "hover:shadow-card-hover hover:-translate-y-1 dark:hover:shadow-white-primary/10",
         onClick && "cursor-pointer",
         className
       )}
@@ -45,7 +46,7 @@ const Card: React.FC<CardProps> & {
 
 const CardHeader: React.FC<CardHeaderProps> = ({ children, className }) => {
   return (
-    <div className={cn("p-6 border-b border-gray-200", className)}>
+    <div className={cn("p-6 border-b border-gray-200 dark:border-gray-700", className)}>
       {children}
     </div>
   )
@@ -61,7 +62,7 @@ const CardBody: React.FC<CardBodyProps> = ({ children, className }) => {
 
 const CardFooter: React.FC<CardFooterProps> = ({ children, className }) => {
   return (
-    <div className={cn("p-6 border-t border-gray-200", className)}>
+    <div className={cn("p-6 border-t border-gray-200 dark:border-gray-700", className)}>
       {children}
     </div>
   )

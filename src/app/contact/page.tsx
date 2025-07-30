@@ -103,260 +103,270 @@ const categories = [
 export default function ContactPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
-  const [contactForm, setContactForm] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    category: '',
+    subject: '',
     message: ''
   })
 
-  const filteredFaq = selectedCategory === 'all' 
+  const filteredFaqs = selectedCategory === 'all' 
     ? faqData 
-    : faqData.filter(item => item.category === selectedCategory)
+    : faqData.filter(faq => faq.category === selectedCategory)
 
-  const handleSubmitInquiry = async () => {
-    if (!contactForm.name || !contactForm.email || !contactForm.message) {
-      alert('필수 정보를 모두 입력해주세요.')
-      return
-    }
-
-    // 실제 구현시 문의 데이터 저장
-    alert('문의가 접수되었습니다. 빠른 시일 내에 답변드리겠습니다.')
-    setContactForm({ name: '', email: '', phone: '', category: '', message: '' })
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star 
-        key={i} 
-        className={`h-4 w-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
-      />
-    ))
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // 폼 제출 로직
+    console.log('Form submitted:', formData)
+    alert('문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.')
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    })
   }
 
   return (
-    <div className="bg-white-primary">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       {/* 헤더 섹션 */}
-      <section className="bg-black-primary text-white-primary py-16">
+      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif-kr">
-            고객센터
+          <div className="mb-8">
+            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+              Contact Us
+            </div>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 font-serif-kr">
+            연락처
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            궁금한 점이 있으시면 언제든지 문의해주세요
+          
+          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            궁금한 점이 있으시거나 창업 문의가 있으시면 언제든 연락해주세요
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* 연락처 정보 */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-black-primary mb-8 text-center font-serif-kr">
-            연락처 정보
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="text-center">
-              <Card.Body>
-                <Phone className="h-12 w-12 text-black-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-black-primary mb-2">전화 문의</h3>
-                <p className="text-gray-600 mb-4">02-1234-5678</p>
-                <p className="text-sm text-gray-500">
-                  평일 09:00-18:00<br />
-                  (점심시간 12:00-13:00 제외)
-                </p>
-              </Card.Body>
-            </Card>
-            
-            <Card className="text-center">
-              <Card.Body>
-                <Mail className="h-12 w-12 text-black-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-black-primary mb-2">이메일 문의</h3>
-                <p className="text-gray-600 mb-4">contact@blackstone.cafe</p>
-                <p className="text-sm text-gray-500">
-                  24시간 접수 가능<br />
-                  1-2 영업일 내 답변
-                </p>
-              </Card.Body>
-            </Card>
-            
-            <Card className="text-center">
-              <Card.Body>
-                <MessageCircle className="h-12 w-12 text-black-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-black-primary mb-2">카카오톡 문의</h3>
-                <p className="text-gray-600 mb-4">@블랙스톤카페</p>
-                <p className="text-sm text-gray-500">
-                  평일 09:00-18:00<br />
-                  실시간 상담 가능
-                </p>
-              </Card.Body>
-            </Card>
-          </div>
-        </section>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* FAQ */}
-          <section>
-            <h2 className="text-3xl font-bold text-black-primary mb-8 font-serif-kr">
-              자주 묻는 질문
-            </h2>
-            
-            {/* 카테고리 필터 */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={selectedCategory === category.id ? 'primary' : 'secondary'}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  {category.name}
-                </Button>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+              <Phone className="h-8 w-8 text-blue-600" />
             </div>
-            
-            {/* FAQ 목록 */}
-            <div className="space-y-4">
-              {filteredFaq.map((faq) => (
-                <Card key={faq.id}>
-                  <div 
-                    className="cursor-pointer"
-                    onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
-                  >
-                    <Card.Body>
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-black-primary pr-4">
-                          Q. {faq.question}
-                        </h3>
-                        {expandedFaq === faq.id ? (
-                          <ChevronUp className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                        )}
-                      </div>
-                      
-                      {expandedFaq === faq.id && (
-                        <div className="mt-4 pt-4 border-t border-gray-200">
-                          <p className="text-gray-600 leading-relaxed">
-                            A. {faq.answer}
-                          </p>
-                        </div>
-                      )}
-                    </Card.Body>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </section>
+            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">전화 문의</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">평일 09:00 - 18:00</p>
+            <p className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">02-1234-5678</p>
+          </Card>
 
-          {/* 문의하기 폼 */}
-          <section>
-            <h2 className="text-3xl font-bold text-black-primary mb-8 font-serif-kr">
-              문의하기
-            </h2>
-            
-            <Card>
-              <Card.Body>
-                <div className="space-y-6">
-                  <Input
-                    label="이름 *"
-                    placeholder="이름을 입력해주세요"
-                    value={contactForm.name}
-                    onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
-                  />
-                  
-                  <Input
-                    label="이메일 *"
-                    type="email"
-                    placeholder="이메일을 입력해주세요"
-                    value={contactForm.email}
-                    onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
-                  />
-                  
-                  <Input
-                    label="연락처"
-                    placeholder="연락처를 입력해주세요"
-                    value={contactForm.phone}
-                    onChange={(e) => setContactForm({...contactForm, phone: e.target.value})}
-                  />
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-black-primary mb-2">
-                      문의 분류
-                    </label>
-                    <select
-                      className="w-full px-4 py-3 border-2 border-gray-300 bg-white-primary text-black-primary focus:outline-none focus:border-black-primary"
-                      value={contactForm.category}
-                      onChange={(e) => setContactForm({...contactForm, category: e.target.value})}
-                    >
-                      <option value="">문의 분류를 선택해주세요</option>
-                                           <option value="franchise">창업 문의</option>
-                     <option value="menu">메뉴 관련</option>
-                     <option value="store">매장 관련</option>
-                     <option value="service">서비스 문의</option>
-                     <option value="other">기타</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-black-primary mb-2">
-                      문의 내용 *
-                    </label>
-                    <textarea
-                      className="w-full px-4 py-3 border-2 border-gray-300 bg-white-primary text-black-primary focus:outline-none focus:border-black-primary h-32 resize-none"
-                      placeholder="문의 내용을 상세히 작성해주세요"
-                      value={contactForm.message}
-                      onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
-                    />
-                  </div>
-                  
-                  <Button onClick={handleSubmitInquiry} className="w-full">
-                    <Send className="h-4 w-4 mr-2" />
-                    문의 보내기
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </section>
+          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+              <Mail className="h-8 w-8 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">이메일 문의</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">24시간 접수 가능</p>
+            <p className="text-lg font-semibold text-black dark:text-white transition-colors duration-300">contact@blackstone.com</p>
+          </Card>
+
+          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+              <MessageCircle className="h-8 w-8 text-purple-600" />
+            </div>
+            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">카카오톡 상담</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">실시간 상담 가능</p>
+            <p className="text-lg font-semibold text-black dark:text-white transition-colors duration-300">@블랙스톤카페</p>
+          </Card>
         </div>
 
-        {/* 고객 후기 */}
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold text-black-primary mb-8 text-center font-serif-kr">
-            고객 후기
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reviewData.map((review) => (
-              <Card key={review.id}>
-                <Card.Body>
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h4 className="font-semibold text-black-primary">{review.name}</h4>
-                      <p className="text-sm text-gray-500">{review.date}</p>
-                    </div>
-                    <div className="flex">
-                      {renderStars(review.rating)}
+        {/* FAQ 섹션 */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+              자주 묻는 질문
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+              블랙스톤 카페에 대해 자주 문의하시는 질문들을 확인해보세요
+            </p>
+          </div>
+
+          {/* 카테고리 필터 */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === category.id
+                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          {/* FAQ 목록 */}
+          <div className="space-y-4">
+            {filteredFaqs.map((faq) => (
+              <Card key={faq.id} className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300"
+                >
+                  <h3 className="text-lg font-semibold text-black dark:text-white pr-4 transition-colors duration-300">
+                    {faq.question}
+                  </h3>
+                  {expandedFaq === faq.id ? (
+                    <ChevronUp className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-colors duration-300" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-colors duration-300" />
+                  )}
+                </button>
+                {expandedFaq === faq.id && (
+                  <div className="px-6 pb-6">
+                    <div className="border-t border-gray-200 dark:border-gray-700 pt-4 transition-colors duration-300">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                        {faq.answer}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    {review.comment}
-                  </p>
-                </Card.Body>
+                )}
               </Card>
             ))}
           </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-gray-600 mb-4">
-              블랙스톤 카페를 방문해주신 고객님들의 소중한 후기입니다
+        </div>
+
+        {/* 문의 폼 섹션 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* 문의 폼 */}
+          <div>
+            <h2 className="text-3xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+              문의하기
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+              아래 양식을 작성해주시면 빠른 시일 내에 연락드리겠습니다.
             </p>
-            <Button variant="secondary" asChild>
-              <Link href="/contact">창업 문의하기</Link>
-            </Button>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input
+                  label="이름"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                />
+                <Input
+                  label="전화번호"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                />
+              </div>
+
+              <Input
+                label="이메일"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+              />
+
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2 transition-colors duration-300">
+                  문의 유형
+                </label>
+                <select
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+                >
+                  <option value="">선택해주세요</option>
+                  <option value="franchise">창업 문의</option>
+                  <option value="menu">메뉴 문의</option>
+                  <option value="store">매장 문의</option>
+                  <option value="service">서비스 문의</option>
+                  <option value="other">기타</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2 transition-colors duration-300">
+                  문의 내용
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white resize-none"
+                  placeholder="문의하실 내용을 자세히 작성해주세요..."
+                />
+              </div>
+
+              <Button type="submit" size="lg" className="w-full">
+                <Send className="h-5 w-5 mr-2" />
+                문의 보내기
+              </Button>
+            </form>
           </div>
-        </section>
+
+          {/* 고객 후기 */}
+          <div>
+            <h2 className="text-3xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+              고객 후기
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+              블랙스톤을 이용해주신 고객들의 소중한 후기입니다.
+            </p>
+
+            <div className="space-y-6">
+              {reviewData.map((review) => (
+                <Card key={review.id} className="p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h4 className="font-bold text-black dark:text-white transition-colors duration-300">{review.name}</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{review.date}</p>
+                    </div>
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
+                          } transition-colors duration-300`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                    {review.comment}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

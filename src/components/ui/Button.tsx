@@ -1,68 +1,74 @@
 import React from 'react'
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@/lib/utils'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'text'
   size?: 'sm' | 'md' | 'lg'
-  loading?: boolean
   asChild?: boolean
+  children: React.ReactNode
 }
 
 const Button: React.FC<ButtonProps> = ({
-  children,
-  className,
   variant = 'primary',
   size = 'md',
-  loading = false,
-  disabled,
   asChild = false,
+  className,
+  children,
   ...props
 }) => {
-  const baseStyles = "font-semibold border-2 transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-black-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center"
-  
-  const variantStyles = {
-    primary: "bg-black-primary text-white-primary border-black-primary hover:bg-white-primary hover:text-black-primary",
-    secondary: "bg-white-primary text-black-primary border-black-primary hover:bg-black-primary hover:text-white-primary",
-    text: "bg-transparent text-black-primary border-transparent hover:bg-gray-100 underline"
-  }
-  
-  const sizeStyles = {
-    sm: "px-3 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg"
+  const Comp = asChild ? Slot : 'button'
+
+  const baseClasses = [
+    'inline-flex items-center justify-center',
+    'font-medium rounded-lg transition-all duration-300',
+    'focus:outline-none focus:ring-2 focus:ring-offset-2',
+    'disabled:opacity-50 disabled:cursor-not-allowed',
+    'transform hover:scale-105 active:scale-95',
+  ]
+
+  const variantClasses = {
+    primary: [
+      'bg-black-primary hover:bg-black-soft',
+      'dark:bg-white-primary dark:hover:bg-gray-100',
+      'text-white-primary dark:text-black-primary',
+      'shadow-md hover:shadow-lg',
+      'focus:ring-black-primary dark:focus:ring-white-primary',
+    ],
+    secondary: [
+      'bg-white-primary hover:bg-gray-50',
+      'dark:bg-black-primary dark:hover:bg-black-soft',
+      'text-black-primary dark:text-white-primary',
+      'border-2 border-black-primary dark:border-white-primary',
+      'hover:border-black-soft dark:hover:border-gray-200',
+      'focus:ring-black-primary dark:focus:ring-white-primary',
+    ],
+    text: [
+      'bg-transparent hover:bg-gray-100',
+      'dark:hover:bg-gray-800',
+      'text-black-primary dark:text-white-primary',
+      'hover:text-black-soft dark:hover:text-gray-200',
+      'focus:ring-black-primary dark:focus:ring-white-primary',
+    ],
   }
 
-  const classes = cn(
-    baseStyles,
-    variantStyles[variant],
-    sizeStyles[size],
-    loading && "cursor-wait",
+  const sizeClasses = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg',
+  }
+
+  const allClasses = cn(
+    baseClasses,
+    variantClasses[variant],
+    sizeClasses[size],
     className
   )
 
-  if (asChild) {
-    const child = children as React.ReactElement<Record<string, unknown>>
-    return React.cloneElement(child, {
-      className: cn(child.props.className as string, classes),
-      ...(props as Record<string, unknown>)
-    })
-  }
-
   return (
-    <button
-      className={classes}
-      disabled={disabled || loading}
-      {...props}
-    >
-      {loading ? (
-        <div className="flex items-center justify-center">
-          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
-          로딩중...
-        </div>
-      ) : (
-        children
-      )}
-    </button>
+    <Comp className={allClasses} {...props}>
+      {children}
+    </Comp>
   )
 }
 

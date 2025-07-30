@@ -6,114 +6,130 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { formatPrice } from '@/lib/utils'
 
-// 인기 메뉴 데이터
-const popularMenus = [
-  {
-    id: 1,
-    name: '시그니처 아메리카노',
-    description: '블랙스톤만의 특별한 블렌드로 만든 진한 아메리카노',
-    price: 4500,
-    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop',
-    badge: '베스트셀러',
-    rating: 4.8
-  },
-  {
-    id: 2,
-    name: '바닐라 라떼',
-    description: '부드러운 우유와 달콤한 바닐라의 완벽한 조화',
-    price: 5500,
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop',
-    badge: '인기',
-    rating: 4.7
-  },
-  {
-    id: 3,
-    name: '티라미수',
-    description: '이탈리아 전통 레시피로 만든 진짜 티라미수',
-    price: 7000,
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
-    badge: 'NEW',
-    rating: 4.9
-  }
+// 브랜드 통계 데이터
+const stats = [
+  { number: '50+', label: '전국 매장수', icon: MapPin },
+  { number: '10,000+', label: '월 평균 고객수', icon: Users },
+  { number: '95%', label: '고객 만족도', icon: Star },
+  { number: '200+', label: '일 평균 판매량', icon: Coffee },
 ]
 
 // 브랜드 특징 데이터
 const features = [
   {
-    icon: Award,
-    title: '프리미엄 브랜드',
-    description: '10년간 쌓아온 브랜드 신뢰도와 검증된 창업 시스템'
+    icon: Coffee,
+    title: '프리미엄 원두',
+    description: '세계 각지에서 엄선한 최고급 아라비카 원두만을 사용하여 깊고 풍부한 맛을 선사합니다'
   },
   {
-    icon: Users,
-    title: '전문 교육',
-    description: '체계적인 바리스타 교육과 매장 운영 노하우 전수'
+    icon: Award,
+    title: '브랜드 신뢰도',
+    description: '국내 대표 카페 브랜드로서 검증된 품질과 서비스를 바탕으로 성공적인 창업을 지원합니다'
   },
   {
     icon: TrendingUp,
     title: '지속적 성장',
-    description: '매년 20% 이상의 매출 성장과 안정적인 수익 보장'
+    description: '차별화된 메뉴 개발과 마케팅 전략으로 지속적인 매출 성장을 실현합니다'
   },
   {
-    icon: Coffee,
-    title: '최고급 원두',
-    description: '엄선된 스페셜티 커피와 독자적인 로스팅 기술'
-  }
+    icon: CheckCircle,
+    title: '체계적 운영',
+    description: '표준화된 운영 시스템과 지속적인 교육을 통해 안정적인 매장 운영을 보장합니다'
+  },
 ]
 
-// 통계 데이터
-const stats = [
-  { number: '150+', label: '가맹점 수' },
-  { number: '95%', label: '고객 만족도' },
-  { number: '10년', label: '브랜드 역사' },
-  { number: '24시간', label: '창업 상담' }
+// 인기 메뉴 데이터
+const popularMenus = [
+  {
+    id: 1,
+    name: '시그니처 아메리카노',
+    description: '블랙스톤만의 특별한 블렌드로 만든 진한 아메리카노. 깊은 풍미와 균형잡힌 바디감이 특징입니다.',
+    price: 4500,
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop',
+    rating: 4.8,
+    badge: 'NEW'
+  },
+  {
+    id: 2,
+    name: '바닐라 크림 라떼',
+    description: '부드러운 바닐라 크림과 진한 에스프레소의 완벽한 조화. 달콤함과 진한 맛의 밸런스가 일품입니다.',
+    price: 5500,
+    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop',
+    rating: 4.9,
+    badge: '베스트셀러'
+  },
+  {
+    id: 3,
+    name: '티라미수 케이크',
+    description: '이탈리아 정통 레시피로 만든 진짜 티라미수. 마스카포네 치즈와 커피의 환상적인 조합입니다.',
+    price: 7000,
+    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop',
+    rating: 4.7,
+    badge: '시그니처'
+  },
 ]
 
-// 고객 후기 데이터
-const testimonials = [
+// 고객 리뷰 데이터
+const reviews = [
   {
     id: 1,
     name: '김민수',
-    role: '강남점 점주',
-    content: '체계적인 교육과 지원 덕분에 안정적으로 매장을 운영하고 있습니다. 블랙스톤과 함께해서 정말 좋았어요.',
+    review: '커피 맛이 정말 좋아요! 매장 분위기도 깔끔하고 작업하기 좋은 환경입니다.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+    date: '2024.03.15',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
   },
   {
     id: 2,
-    name: '박지영',
-    role: '홍대점 점주',
-    content: '프리미엄 브랜드의 힘을 실감하고 있습니다. 고객들의 반응이 정말 좋고 매출도 꾸준히 증가하고 있어요.',
+    name: '이지은',
+    review: '바닐라 라떼 최고입니다. 온라인 주문도 편리하고 픽업도 빨라서 만족스러워요.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
-  }
+    date: '2024.03.14',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b1e1?w=100&h=100&fit=crop&crop=face'
+  },
+  {
+    id: 3,
+    name: '박상현',
+    review: '디자인이 심플하고 좋네요. 티라미수도 맛있었습니다.',
+    rating: 4,
+    date: '2024.03.13',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+  },
 ]
 
-// 최신 소식 데이터
-const news = [
+// 최신 뉴스 데이터
+const latestNews = [
   {
     id: 1,
     title: '신메뉴 출시: 딸기 크림 라떼',
-    summary: '신선한 딸기와 부드러운 크림이 만나는 봄 한정 메뉴가 출시되었습니다',
+    summary: '신선한 딸기와 부드러운 크림이 만나는 봄 한정 메뉴',
     date: '2024.03.15',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
-    category: '신메뉴'
+    category: '신메뉴',
+    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&h=200&fit=crop'
   },
   {
     id: 2,
-    title: '블랙스톤 플래그십 스토어 오픈',
-    summary: '더욱 세련되고 편안한 공간으로 새롭게 단장한 플래그십 스토어가 오픈했습니다',
+    title: '블랙스톤 카페 리뉴얼 오픈',
+    summary: '더욱 세련되고 편안한 공간으로 새롭게 단장',
     date: '2024.03.10',
-    image: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&h=400&fit=crop',
-    category: '매장'
-  }
+    category: '매장소식',
+    image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=300&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    title: '3월 이벤트: 친구와 함께하는 커피 할인',
+    summary: '2잔 이상 주문시 20% 할인 혜택',
+    date: '2024.03.01',
+    category: '이벤트',
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300&h=200&fit=crop'
+  },
 ]
 
 export default function HomePage() {
   return (
-    <div className="bg-white-primary">
-      {/* 히어로 섹션 */}
-      <section className="relative min-h-screen flex items-center justify-center bg-black-primary text-white-primary">
+    <div className="bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      {/* 히어로 섹션 - 기본이 블랙, 라이트모드에서 화이트 */}
+      <section className="relative min-h-screen flex items-center justify-center bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -123,23 +139,23 @@ export default function HomePage() {
             className="object-cover opacity-40"
             priority
           />
-          <div className="absolute inset-0 bg-black-primary/60" />
+          <div className="absolute inset-0 bg-black/60 dark:bg-white/60" />
         </div>
         
         <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
           <div className="mb-12">
-            <div className="inline-block px-8 py-3 border border-white-primary/50 rounded-full text-white-primary text-sm font-medium mb-8 backdrop-blur-sm">
+            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
               Premium Coffee Experience
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-12 font-serif-kr leading-none text-white-primary">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-12 font-serif-kr leading-none text-white dark:text-black transition-colors duration-300">
             블랙스톤
           </h1>
           
-          <p className="text-xl md:text-3xl lg:text-4xl mb-16 text-gray-200 leading-relaxed max-w-5xl mx-auto font-light">
+          <p className="text-xl md:text-3xl lg:text-4xl mb-16 text-gray-200 dark:text-gray-700 leading-relaxed max-w-5xl mx-auto font-light transition-colors duration-300">
             <span className="block mb-4">최고급 원두로 만든 완벽한 커피를</span>
-            <span className="block text-white-primary font-medium">블랙 앤 화이트의 세련된 공간에서</span>
+            <span className="block text-white dark:text-black font-medium transition-colors duration-300">블랙 앤 화이트의 세련된 공간에서</span>
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
@@ -149,7 +165,7 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="group bg-white-primary text-black-primary hover:bg-gray-100">
+            <Button size="lg" asChild className="group bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300">
               <Link href="/contact" className="flex items-center">
                 창업 문의하기
               </Link>
@@ -158,10 +174,10 @@ export default function HomePage() {
           
           {/* 스크롤 인디케이터 */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="flex flex-col items-center text-white-primary">
+            <div className="flex flex-col items-center text-white dark:text-black transition-colors duration-300">
               <span className="text-sm mb-3 font-medium">더 많은 정보 보기</span>
-              <div className="w-6 h-10 border-2 border-white-primary/60 rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-white-primary/80 rounded-full mt-2 animate-bounce" />
+              <div className="w-6 h-10 border-2 border-white/60 dark:border-black/60 rounded-full flex justify-center transition-colors duration-300">
+                <div className="w-1 h-3 bg-white/80 dark:bg-black/80 rounded-full mt-2 animate-bounce transition-colors duration-300" />
               </div>
             </div>
           </div>
@@ -169,30 +185,30 @@ export default function HomePage() {
       </section>
 
       {/* 브랜드 통계 섹션 */}
-      <section className="py-32 bg-white-primary">
+      <section className="py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block px-8 py-4 border-2 border-black-primary/10 rounded-full text-black-primary font-semibold text-lg mb-8">
-              성장하는 브랜드
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-black-primary mb-8 font-serif-kr">
-              숫자로 보는 블랙스톤
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+              검증된 브랜드 파워
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              전국 고객들의 신뢰와 사랑으로 성장하고 있는 블랙스톤의 성과입니다
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
+              전국 매장 운영 데이터로 입증된 블랙스톤의 성공 스토리
             </p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="group text-center">
-                <div className="bg-white-primary border-2 border-gray-100 rounded-2xl p-10 hover:border-black-primary/20 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  <div className="text-4xl lg:text-5xl font-bold text-black-primary mb-4 font-serif-kr">
+              <div key={index} className="text-center group">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 border border-gray-200 dark:border-gray-700">
+                  <div className="w-16 h-16 bg-black dark:bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                    <stat.icon className="h-8 w-8 text-white dark:text-black transition-colors duration-300" />
+                  </div>
+                  <div className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif-kr transition-colors duration-300">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600 font-semibold text-lg">
+                  <p className="text-gray-600 dark:text-gray-300 font-medium text-lg transition-colors duration-300">
                     {stat.label}
-                  </div>
+                  </p>
                 </div>
               </div>
             ))}
@@ -201,13 +217,13 @@ export default function HomePage() {
       </section>
 
       {/* 브랜드 특징 섹션 */}
-      <section className="py-32 bg-black-primary text-white-primary">
+      <section className="py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
               왜 블랙스톤일까요?
             </h2>
-            <p className="text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
               성공적인 카페 창업을 위한 모든 것이 준비되어 있습니다
             </p>
           </div>
@@ -215,14 +231,14 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="group text-center">
-                <div className="bg-white-primary/5 border border-white-primary/10 rounded-2xl p-8 hover:bg-white-primary/10 hover:border-white-primary/20 transition-all duration-300 group-hover:scale-105">
-                  <div className="w-20 h-20 bg-white-primary rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gray-100 transition-colors duration-300">
-                    <feature.icon className="h-10 w-10 text-black-primary" />
+                <div className="bg-white/5 dark:bg-black/5 border border-white/10 dark:border-black/10 rounded-2xl p-8 hover:bg-white/10 dark:hover:bg-black/10 hover:border-white/20 dark:hover:border-black/20 transition-all duration-300 group-hover:scale-105">
+                  <div className="w-20 h-20 bg-white dark:bg-black rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition-colors duration-300">
+                    <feature.icon className="h-10 w-10 text-black dark:text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-6 text-white-primary">
+                  <h3 className="text-2xl font-bold mb-6 text-white dark:text-black">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-200 leading-relaxed text-lg">
+                  <p className="text-gray-200 dark:text-gray-600 leading-relaxed text-lg">
                     {feature.description}
                   </p>
                 </div>
@@ -233,30 +249,30 @@ export default function HomePage() {
       </section>
 
       {/* 인기 메뉴 섹션 */}
-      <section className="py-32 bg-gray-50">
+      <section className="py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <div className="inline-block px-8 py-4 border-2 border-black-primary/10 rounded-full text-black-primary font-semibold text-lg mb-8">
+            <div className="inline-block px-8 py-4 border-2 border-black/10 dark:border-white/10 rounded-full text-black dark:text-white font-semibold text-lg mb-8 transition-colors duration-300">
               시그니처 메뉴
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-black-primary mb-8 font-serif-kr">
+            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
               고객들이 사랑하는 메뉴
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
               블랙스톤의 시그니처 메뉴로 특별한 맛의 경험을 선사합니다
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {popularMenus.map((menu) => (
-              <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-black-primary/20">
+              <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 dark:border-gray-700 hover:border-black/20 dark:hover:border-white/20">
                 <div className="aspect-square relative overflow-hidden">
                   {/* 배지 */}
                   <div className="absolute top-4 left-4 z-20">
                     <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold ${
-                      menu.badge === 'NEW' ? 'bg-black-primary text-white-primary' :
-                      menu.badge === '베스트셀러' ? 'bg-white-primary text-black-primary border-2 border-black-primary' :
-                      'bg-gray-600 text-white-primary'
+                      menu.badge === 'NEW' ? 'bg-black text-white' :
+                      menu.badge === '베스트셀러' ? 'bg-white text-black border-2 border-black' :
+                      'bg-gray-600 text-white'
                     }`}>
                       {menu.badge}
                     </span>
@@ -271,7 +287,7 @@ export default function HomePage() {
                   />
                   
                   {/* 호버 오버레이 */}
-                  <div className="absolute inset-0 bg-black-primary/0 group-hover:bg-black-primary/20 transition-all duration-300 z-10" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 z-10" />
                   
                   {/* 호버 버튼 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
@@ -281,82 +297,80 @@ export default function HomePage() {
                   </div>
                 </div>
                 
-                <Card.Body className="p-8 bg-white-primary">
+                <Card.Body className="p-8 bg-white dark:bg-gray-800 transition-colors duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-black-primary">
+                    <h3 className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">
                       {menu.name}
                     </h3>
-                    <div className="flex items-center bg-gray-100 px-3 py-1 rounded-full">
-                      <Star className="h-4 w-4 text-black-primary fill-current mr-1" />
-                      <span className="text-black-primary font-semibold text-sm">{menu.rating}</span>
+                    <div className="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full transition-colors duration-300">
+                      <Star className="h-4 w-4 text-black dark:text-white fill-current mr-1 transition-colors duration-300" />
+                      <span className="text-black dark:text-white font-semibold text-sm transition-colors duration-300">{menu.rating}</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg transition-colors duration-300">
                     {menu.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-3xl font-bold text-black-primary font-serif-kr">
+                    <span className="text-3xl font-bold text-black dark:text-white font-serif-kr transition-colors duration-300">
                       {formatPrice(menu.price)}
                     </span>
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-black-primary fill-current" />
-                      ))}
-                    </div>
+                    <Button variant="secondary" size="sm" asChild>
+                      <Link href="/menu">자세히 보기</Link>
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
             ))}
           </div>
-          
-          <div className="text-center mt-20">
-            <Button variant="secondary" size="lg" asChild className="group">
-              <Link href="/menu" className="flex items-center">
-                전체 메뉴 보기
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
-      {/* 고객 후기 섹션 */}
-      <section className="py-32 bg-black-primary text-white-primary">
+      {/* 고객 리뷰 섹션 */}
+      <section className="py-32 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
-              성공 스토리
+            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+              고객들의 생생한 후기
             </h2>
-            <p className="text-2xl text-gray-200 max-w-4xl mx-auto">
-              블랙스톤과 함께 성공한 점주님들의 생생한 후기입니다
+            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+              블랙스톤을 경험한 고객들의 진솔한 이야기를 들어보세요
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.id} className="bg-white-primary/5 border border-white-primary/10 hover:border-white-primary/20 transition-all duration-300">
-                <Card.Body className="p-10">
-                  <Quote className="h-12 w-12 text-white-primary mb-6" />
-                  <p className="text-xl text-gray-100 leading-relaxed mb-8">
-                    &ldquo;{testimonial.content}&rdquo;
-                  </p>
-                  <div className="flex items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {reviews.map((review) => (
+              <Card key={review.id} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
+                <Card.Body className="p-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                  <div className="flex items-center mb-6">
                     <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
+                      src={review.avatar}
+                      alt={review.name}
                       width={60}
                       height={60}
                       className="rounded-full mr-4"
                     />
                     <div>
-                      <h4 className="text-lg font-semibold text-white-primary">{testimonial.name}</h4>
-                      <p className="text-gray-300">{testimonial.role}</p>
-                      <div className="flex items-center mt-2">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-white-primary fill-current" />
-                        ))}
-                      </div>
+                      <h4 className="font-bold text-lg text-black dark:text-white transition-colors duration-300">{review.name}</h4>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">{review.date}</p>
                     </div>
+                  </div>
+                  
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-5 w-5 ${
+                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
+                        } transition-colors duration-300`}
+                      />
+                    ))}
+                  </div>
+                  
+                  <div className="relative">
+                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-gray-300 dark:text-gray-600 transition-colors duration-300" />
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg pl-6 transition-colors duration-300">
+                      {review.review}
+                    </p>
                   </div>
                 </Card.Body>
               </Card>
@@ -366,171 +380,141 @@ export default function HomePage() {
       </section>
 
       {/* 매장 소개 섹션 */}
-      <section className="py-32 bg-white-primary">
+      <section className="py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="inline-block px-8 py-4 border-2 border-black-primary/10 rounded-full text-black-primary font-semibold text-lg mb-10">
-                브랜드 스토리
-              </div>
-              
-              <h2 className="text-5xl md:text-6xl font-bold text-black-primary mb-10 font-serif-kr leading-tight">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
                 블랙 앤 화이트의<br />
-                세련된 공간
+                미니멀 공간
               </h2>
-              
-              <p className="text-2xl text-gray-600 mb-12 leading-relaxed">
-                미니멀하면서도 고급스러운 인테리어로 꾸며진 블랙스톤 카페는 
-                바쁜 일상 속에서 잠시 여유를 찾을 수 있는 특별한 공간입니다.
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed transition-colors duration-300">
+                깔끔하고 세련된 인테리어로 특별한 커피 경험을 선사합니다. 
+                업무나 휴식, 모임 등 다양한 목적에 최적화된 공간을 제공합니다.
               </p>
               
-              {/* 특징 목록 */}
-              <div className="space-y-6 mb-12">
-                {[
-                  '최고급 스페셜티 원두만 사용',
-                  '숙련된 바리스타의 정성스런 핸드드립',
-                  '미니멀한 블랙 앤 화이트 인테리어',
-                  '프리미엄 창업 시스템 제공'
-                                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-black-primary rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-white-primary" />
-                    </div>
-                    <span className="text-gray-700 text-lg">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-8">
-                  <Clock className="h-10 w-10 text-black-primary mb-6" />
-                  <div className="font-bold text-black-primary mb-3 text-xl">운영시간</div>
-                  <div className="text-gray-600 text-lg">매일 07:00 - 22:00</div>
+              <div className="space-y-6 mb-10">
+                <div className="flex items-center">
+                  <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
+                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">무료 Wi-Fi 및 콘센트 제공</span>
                 </div>
-                <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-8">
-                  <MapPin className="h-10 w-10 text-black-primary mb-6" />
-                  <div className="font-bold text-black-primary mb-3 text-xl">위치</div>
-                  <div className="text-gray-600 text-lg">강남구 테헤란로 123</div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
+                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">조용한 작업 환경</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
+                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">프라이빗 미팅룸 예약 가능</span>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-6">
-                <Button asChild size="lg" className="flex-1">
-                  <Link href="/store">매장 정보 자세히 보기</Link>
-                </Button>
-                <Button variant="secondary" asChild size="lg" className="flex-1">
-                  <Link href="/contact">창업 문의하기</Link>
-                </Button>
-              </div>
+              <Button size="lg" asChild>
+                <Link href="/store">매장 정보 보기</Link>
+              </Button>
             </div>
             
-            <div className="order-1 lg:order-2 relative">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden border-4 border-gray-200">
+            <div className="relative">
+              <div className="aspect-square relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&h=600&fit=crop"
-                  alt="블랙스톤 카페 인테리어"
+                  src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop"
+                  alt="블랙스톤 카페 매장 인테리어"
                   fill
                   className="object-cover"
                 />
+              </div>
+              
+              {/* 플로팅 카드 */}
+              <div className="absolute -bottom-8 -left-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mr-4 transition-colors duration-300">
+                    <Clock className="h-6 w-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-black dark:text-white transition-colors duration-300">매일 오픈</p>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300">06:30 - 22:00</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 최신 소식 섹션 */}
-      <section className="py-32 bg-gray-50">
+      {/* 최신 뉴스 섹션 */}
+      <section className="py-32 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <div className="inline-block px-8 py-4 border-2 border-black-primary/10 rounded-full text-black-primary font-semibold text-lg mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
               최신 소식
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-black-primary mb-8 font-serif-kr">
-              블랙스톤의 새로운 소식
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              새로운 메뉴와 이벤트, 매장 소식을 가장 먼저 확인해보세요
+            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+              블랙스톤의 새로운 소식과 이벤트를 확인해보세요
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {news.map((item) => (
-              <Card key={item.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-black-primary/20">
-                <div className="aspect-[16/9] relative overflow-hidden">
-                  {/* 카테고리 배지 */}
-                  <div className="absolute top-6 left-6 z-20">
-                    <span className="inline-block px-4 py-2 bg-black-primary text-white-primary rounded-full text-sm font-bold">
-                      {item.category}
-                    </span>
-                  </div>
-                  
-                  {/* 실제 이미지 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {latestNews.map((news) => (
+              <Card key={news.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
+                <div className="aspect-video relative overflow-hidden">
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={news.image}
+                    alt={news.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  
-                  {/* 호버 오버레이 */}
-                  <div className="absolute inset-0 bg-black-primary/0 group-hover:bg-black-primary/20 transition-all duration-300 z-10" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-sm font-semibold transition-colors duration-300">
+                      {news.category}
+                    </span>
+                  </div>
                 </div>
                 
-                <Card.Body className="p-10 bg-white-primary">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-gray-600 font-semibold">{item.date}</span>
-                    <ArrowRight className="h-5 w-5 text-gray-500 group-hover:text-black-primary group-hover:translate-x-1 transition-all duration-300" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-black-primary mb-6 group-hover:text-gray-700 transition-colors duration-300">
-                    {item.title}
+                <Card.Body className="p-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">{news.date}</p>
+                  <h3 className="text-xl font-bold text-black dark:text-white mb-3 line-clamp-2 transition-colors duration-300">
+                    {news.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    {item.summary}
+                  <p className="text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 transition-colors duration-300">
+                    {news.summary}
                   </p>
+                  <Button variant="text" size="sm" asChild>
+                    <Link href="/news">자세히 보기</Link>
+                  </Button>
                 </Card.Body>
               </Card>
             ))}
           </div>
           
-          <div className="text-center mt-20">
-            <Button variant="secondary" size="lg" asChild className="group">
-              <Link href="/news" className="flex items-center">
-                모든 소식 보기
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
+          <div className="text-center mt-16">
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/news">모든 소식 보기</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* CTA 섹션 */}
-      <section className="py-32 bg-black-primary text-white-primary">
-        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <div className="inline-block px-8 py-4 border border-white-primary/30 rounded-full text-white-primary font-semibold text-lg mb-8 backdrop-blur-sm">
-              지금 시작하세요
-            </div>
-          </div>
-          
-          <h2 className="text-5xl md:text-7xl font-bold mb-12 font-serif-kr leading-tight">
-            <span className="block mb-4">블랙스톤 카페와</span>
-            <span className="block">함께하세요</span>
+      <section className="py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
+            함께 성장할 파트너를 찾습니다
           </h2>
-          
-          <p className="text-2xl md:text-3xl text-gray-200 mb-16 leading-relaxed max-w-5xl mx-auto">
-            검증된 브랜드, 체계적인 시스템으로<br />
-            <span className="text-white-primary font-bold">성공적인 카페 창업을 시작해보세요</span>
+          <p className="text-2xl text-gray-200 dark:text-gray-600 mb-12 leading-relaxed transition-colors duration-300">
+            검증된 브랜드 파워와 체계적인 시스템으로<br />
+            성공적인 창업의 첫 걸음을 시작하세요
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button size="lg" variant="secondary" asChild className="group">
-              <Link href="/contact" className="flex items-center text-lg px-12 py-6">
+              <Link href="/contact" className="flex items-center">
                 창업 문의하기
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" variant="text" asChild className="border-2 border-white-primary/30 text-white-primary hover:bg-white-primary/10 hover:border-white-primary/50">
-              <Link href="/store" className="text-lg px-12 py-6">매장 둘러보기</Link>
+            <Button size="lg" asChild className="group bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300">
+              <Link href="/franchise" className="flex items-center">
+                가맹점 정보 보기
+              </Link>
             </Button>
           </div>
         </div>

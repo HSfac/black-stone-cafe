@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingBanner from '@/components/ui/FloatingBanner'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
@@ -49,16 +50,44 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={`${notoSansKR.variable} ${notoSerifKR.variable}`}>
-      <body className="font-sans-kr antialiased bg-white-primary text-black-primary">
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-grow pb-20">
-            {children}
-          </main>
-          <Footer />
-          <FloatingBanner />
-        </div>
+    <html 
+      lang="ko" 
+      className={`${notoSansKR.variable} ${notoSerifKR.variable} dark`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                  } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                }
+              })()
+            `,
+          }}
+        />
+      </head>
+      <body className="font-sans-kr antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+        <ThemeProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-grow pb-16 sm:pb-20">
+              {children}
+            </main>
+            <Footer />
+            <FloatingBanner />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

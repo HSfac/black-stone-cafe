@@ -1,4 +1,4 @@
-'use client'
+ㅊ'use client'
 
 import React, { useState } from 'react'
 import { Calendar, Tag, Coffee } from 'lucide-react'
@@ -98,14 +98,14 @@ const getCategoryName = (categoryId: string) => {
 
 const getCategoryColor = (categoryId: string) => {
   const colors: Record<string, string> = {
-    menu: 'bg-blue-100 text-blue-800',
-    event: 'bg-red-100 text-red-800',
-    store: 'bg-green-100 text-green-800',
-    notice: 'bg-yellow-100 text-yellow-800',
-    coffee: 'bg-purple-100 text-purple-800',
-    recruitment: 'bg-gray-100 text-gray-800',
+    menu: 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300',
+    event: 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300',
+    store: 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300',
+    notice: 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300',
+    coffee: 'bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300',
+    recruitment: 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300',
   }
-  return colors[categoryId] || 'bg-gray-100 text-gray-800'
+  return colors[categoryId] || 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
 }
 
 export default function NewsPage() {
@@ -114,169 +114,209 @@ export default function NewsPage() {
 
   const filteredNews = selectedCategory === 'all' 
     ? newsData 
-    : newsData.filter(item => item.category === selectedCategory)
+    : newsData.filter(news => news.category === selectedCategory)
 
-  const featuredNews = newsData.filter(item => item.featured)
+  const featuredNews = newsData.filter(news => news.featured)
+  const regularNews = newsData.filter(news => !news.featured)
 
   if (selectedNews) {
     return (
-      <div className="bg-white-primary min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <Button 
-            variant="text" 
-            onClick={() => setSelectedNews(null)}
-            className="mb-6"
-          >
-            ← 목록으로 돌아가기
-          </Button>
+      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+        {/* 뉴스 상세 페이지 */}
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-8">
+            <Button 
+              variant="secondary" 
+              onClick={() => setSelectedNews(null)}
+              className="mb-6"
+            >
+              ← 목록으로 돌아가기
+            </Button>
+            
+            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(selectedNews.category)} transition-colors duration-300`}>
+              {getCategoryName(selectedNews.category)}
+            </span>
+          </div>
           
-          <article>
-            <header className="mb-8">
-              <div className="flex items-center gap-2 mb-4">
-                <span className={`px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(selectedNews.category)}`}>
-                  {getCategoryName(selectedNews.category)}
-                </span>
-                <span className="text-gray-500 text-sm">{selectedNews.date}</span>
-              </div>
-              <h1 className="text-4xl font-bold text-black-primary mb-4 font-serif-kr">
-                {selectedNews.title}
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {selectedNews.summary}
-              </p>
-            </header>
-            
-            <div className="aspect-[16/9] bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center mb-8">
-              <Coffee className="h-24 w-24 text-gray-400" />
+          <header className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif-kr transition-colors duration-300">
+              {selectedNews.title}
+            </h1>
+            <div className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-300">
+              <Calendar className="h-4 w-4 mr-2" />
+              {selectedNews.date}
             </div>
-            
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {selectedNews.content}
-              </p>
+          </header>
+          
+          <div className="aspect-video relative overflow-hidden rounded-xl mb-8 bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+            {/* 임시 이미지 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+              <Coffee className="h-20 w-20 text-white opacity-60" />
             </div>
-          </article>
-        </div>
+          </div>
+          
+          <div className="prose max-w-none">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed transition-colors duration-300">
+              {selectedNews.summary}
+            </p>
+            <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 transition-colors duration-300">
+              {selectedNews.content.split('\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </article>
       </div>
     )
   }
 
   return (
-    <div className="bg-white-primary">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       {/* 헤더 섹션 */}
-      <section className="bg-black-primary text-white-primary py-16">
+      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif-kr">
-            소식 & 이벤트
+          <div className="mb-8">
+            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+              Latest News
+            </div>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 font-serif-kr">
+            뉴스 & 소식
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            블랙스톤의 새로운 소식과 다양한 이벤트를 확인해보세요
+          
+          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            블랙스톤의 최신 소식과 이벤트 정보를 확인해보세요
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 주요 소식 */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-black-primary mb-8 font-serif-kr">
-            주요 소식
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* 카테고리 필터 */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                selectedCategory === category.id
+                  ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              <category.icon className="h-4 w-4" />
+              {category.name}
+            </button>
+          ))}
+        </div>
+
+        {/* 피처드 뉴스 */}
+        {selectedCategory === 'all' && (
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+              주요 소식
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredNews.map((news) => (
+                <Card 
+                  key={news.id} 
+                  className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+                  onClick={() => setSelectedNews(news)}
+                >
+                  <div className="aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+                    {/* 임시 이미지 */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                      <Coffee className="h-16 w-16 text-white opacity-60" />
+                    </div>
+                    
+                    {/* 카테고리 배지 */}
+                    <div className="absolute top-4 left-4">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)} transition-colors duration-300`}>
+                        {getCategoryName(news.category)}
+                      </span>
+                    </div>
+                    
+                    {/* 호버 오버레이 */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                  </div>
+                  
+                  <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+                    <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+                      <Calendar className="h-4 w-4 mr-2" />
+                      {news.date}
+                    </div>
+                    <h3 className="text-xl font-bold text-black dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                      {news.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 line-clamp-2 transition-colors duration-300">
+                      {news.summary}
+                    </p>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 일반 뉴스 */}
+        <div>
+          <h2 className="text-3xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            {selectedCategory === 'all' ? '모든 소식' : getCategoryName(selectedCategory)}
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredNews.map((news) => (
-              <Card key={news.id} className="group cursor-pointer" onClick={() => setSelectedNews(news)}>
-                <div className="aspect-[16/9] relative overflow-hidden bg-gray-100">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <Coffee className="h-16 w-16 text-gray-400" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredNews.map((news) => (
+              <Card 
+                key={news.id} 
+                className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+                onClick={() => setSelectedNews(news)}
+              >
+                <div className="aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+                  {/* 임시 이미지 */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                    <Coffee className="h-12 w-12 text-white opacity-60" />
                   </div>
-                  <div className="absolute inset-0 bg-black-primary opacity-0 group-hover:opacity-20 transition-opacity duration-normal" />
+                  
+                  {/* 카테고리 배지 */}
                   <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(news.category)}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)} transition-colors duration-300`}>
                       {getCategoryName(news.category)}
                     </span>
                   </div>
+                  
+                  {/* 호버 오버레이 */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                 </div>
-                <Card.Body>
-                  <div className="flex items-center text-gray-500 text-sm mb-2">
-                    <Calendar className="h-4 w-4 mr-1" />
+                
+                <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+                    <Calendar className="h-4 w-4 mr-2" />
                     {news.date}
                   </div>
-                  <h3 className="text-xl font-semibold text-black-primary mb-3 group-hover:text-gray-700 transition-colors">
+                  <h3 className="text-lg font-bold text-black dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                     {news.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 transition-colors duration-300">
                     {news.summary}
                   </p>
                 </Card.Body>
               </Card>
             ))}
           </div>
-        </section>
 
-        {/* 카테고리 필터 */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-black-primary mb-8 font-serif-kr">
-            전체 소식
-          </h2>
-          
-          <div className="flex flex-wrap gap-4 mb-8">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={selectedCategory === category.id ? 'primary' : 'secondary'}
-                onClick={() => setSelectedCategory(category.id)}
-                className="flex items-center gap-2"
-              >
-                <category.icon className="h-4 w-4" />
-                {category.name}
-              </Button>
-            ))}
-          </div>
+          {/* 결과 없음 */}
+          {filteredNews.length === 0 && (
+            <div className="text-center py-16">
+              <Coffee className="h-16 w-16 text-gray-400 dark:text-gray-600 mx-auto mb-4 transition-colors duration-300" />
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
+                해당 카테고리의 소식이 없습니다
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                다른 카테고리를 선택해보세요
+              </p>
+            </div>
+          )}
         </div>
-
-        {/* 뉴스 목록 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredNews.map((news) => (
-            <Card key={news.id} className="group cursor-pointer" onClick={() => setSelectedNews(news)}>
-              <div className="aspect-[16/9] relative overflow-hidden bg-gray-100">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <Coffee className="h-12 w-12 text-gray-400" />
-                </div>
-                <div className="absolute inset-0 bg-black-primary opacity-0 group-hover:opacity-20 transition-opacity duration-normal" />
-                <div className="absolute top-3 left-3">
-                  <span className={`px-2 py-1 text-xs font-medium rounded ${getCategoryColor(news.category)}`}>
-                    {getCategoryName(news.category)}
-                  </span>
-                </div>
-              </div>
-              <Card.Body>
-                <div className="flex items-center text-gray-500 text-sm mb-2">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {news.date}
-                </div>
-                <h3 className="text-lg font-semibold text-black-primary mb-2 group-hover:text-gray-700 transition-colors">
-                  {news.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                  {news.summary}
-                </p>
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
-
-        {/* 결과 없음 */}
-        {filteredNews.length === 0 && (
-          <div className="text-center py-20">
-            <Coffee className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">
-              해당 카테고리의 소식이 없습니다
-            </h3>
-            <p className="text-gray-500">
-              다른 카테고리를 확인해보세요
-            </p>
-          </div>
-        )}
       </div>
     </div>
   )
