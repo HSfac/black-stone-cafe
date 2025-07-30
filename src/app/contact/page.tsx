@@ -143,7 +143,7 @@ export default function ContactPage() {
       <section className="relative py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+            <div className="inline-block px-8 py-3 border border-white/50 rounded-full text-white text-sm font-medium mb-8 backdrop-blur-sm">
               Contact Us
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function ContactPage() {
             연락처
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             궁금한 점이 있으시거나 창업 문의가 있으시면 언제든 연락해주세요
           </p>
         </div>
@@ -161,41 +161,41 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* 연락처 정보 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-              <Phone className="h-8 w-8 text-blue-600" />
+          <Card className="text-center p-8 border border-gray-200 bg-white">
+                          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Phone className="h-8 w-8 text-black" />
             </div>
-            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">전화 문의</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">평일 09:00 - 18:00</p>
-            <p className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">02-1234-5678</p>
+            <h3 className="text-xl font-bold text-black mb-3">전화 문의</h3>
+            <p className="text-gray-600 mb-4">평일 09:00 - 18:00</p>
+            <p className="text-2xl font-bold text-black">02-1234-5678</p>
           </Card>
 
-          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+          <Card className="text-center p-8 border border-gray-200 bg-white">
+            <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Mail className="h-8 w-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">이메일 문의</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">24시간 접수 가능</p>
-            <p className="text-lg font-semibold text-black dark:text-white transition-colors duration-300">contact@blackstone.com</p>
+            <h3 className="text-xl font-bold text-black mb-3">이메일 문의</h3>
+            <p className="text-gray-600 mb-4">24시간 접수 가능</p>
+            <p className="text-lg font-semibold text-black">contact@blackstone.com</p>
           </Card>
 
-          <Card className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+          <Card className="text-center p-8 border border-gray-200 bg-white">
+            <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <MessageCircle className="h-8 w-8 text-purple-600" />
             </div>
-            <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">카카오톡 상담</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">실시간 상담 가능</p>
-            <p className="text-lg font-semibold text-black dark:text-white transition-colors duration-300">@블랙스톤카페</p>
+            <h3 className="text-xl font-bold text-black mb-3">카카오톡 상담</h3>
+            <p className="text-gray-600 mb-4">실시간 상담 가능</p>
+            <p className="text-lg font-semibold text-black">@블랙스톤카페</p>
           </Card>
         </div>
 
         {/* FAQ 섹션 */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 font-serif-kr">
               자주 묻는 질문
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               블랙스톤 카페에 대해 자주 문의하시는 질문들을 확인해보세요
             </p>
           </div>
@@ -208,8 +208,8 @@ export default function ContactPage() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    ? 'bg-black text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 {category.name}
@@ -220,24 +220,24 @@ export default function ContactPage() {
           {/* FAQ 목록 */}
           <div className="space-y-4">
             {filteredFaqs.map((faq) => (
-              <Card key={faq.id} className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+              <Card key={faq.id} className="border border-gray-200 bg-white">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50"
                 >
-                  <h3 className="text-lg font-semibold text-black dark:text-white pr-4 transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-black pr-4">
                     {faq.question}
                   </h3>
                   {expandedFaq === faq.id ? (
-                    <ChevronUp className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-colors duration-300" />
+                    <ChevronUp className="h-5 w-5 text-gray-500 flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-colors duration-300" />
+                    <ChevronDown className="h-5 w-5 text-gray-500 flex-shrink-0" />
                   )}
                 </button>
                 {expandedFaq === faq.id && (
                   <div className="px-6 pb-6">
-                    <div className="border-t border-gray-200 dark:border-gray-700 pt-4 transition-colors duration-300">
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                    <div className="border-t border-gray-200 pt-4">
+                      <p className="text-gray-600 leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>
@@ -252,10 +252,10 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* 문의 폼 */}
           <div>
-            <h2 className="text-3xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-3xl font-bold text-black mb-6 font-serif-kr">
               문의하기
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+            <p className="text-gray-600 mb-8">
               아래 양식을 작성해주시면 빠른 시일 내에 연락드리겠습니다.
             </p>
 
@@ -267,7 +267,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                  className="bg-gray-50 border-gray-200"
                 />
                 <Input
                   label="전화번호"
@@ -275,7 +275,7 @@ export default function ContactPage() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
-                  className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                  className="bg-gray-50 border-gray-200"
                 />
               </div>
 
@@ -286,11 +286,11 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                className="bg-gray-50 border-gray-200"
               />
 
               <div>
-                <label className="block text-sm font-medium text-black dark:text-white mb-2 transition-colors duration-300">
+                <label className="block text-sm font-medium text-black mb-2">
                   문의 유형
                 </label>
                 <select
@@ -298,7 +298,7 @@ export default function ContactPage() {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-black"
                 >
                   <option value="">선택해주세요</option>
                   <option value="franchise">창업 문의</option>
@@ -310,7 +310,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-black dark:text-white mb-2 transition-colors duration-300">
+                <label className="block text-sm font-medium text-black mb-2">
                   문의 내용
                 </label>
                 <textarea
@@ -319,7 +319,7 @@ export default function ContactPage() {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-black resize-none"
                   placeholder="문의하실 내용을 자세히 작성해주세요..."
                 />
               </div>
@@ -333,33 +333,33 @@ export default function ContactPage() {
 
           {/* 고객 후기 */}
           <div>
-            <h2 className="text-3xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-3xl font-bold text-black mb-6 font-serif-kr">
               고객 후기
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+            <p className="text-gray-600 mb-8">
               블랙스톤을 이용해주신 고객들의 소중한 후기입니다.
             </p>
 
             <div className="space-y-6">
               {reviewData.map((review) => (
-                <Card key={review.id} className="p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors duration-300">
+                <Card key={review.id} className="p-6 border border-gray-200 bg-white">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h4 className="font-bold text-black dark:text-white transition-colors duration-300">{review.name}</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{review.date}</p>
+                      <h4 className="font-bold text-black">{review.name}</h4>
+                      <p className="text-sm text-gray-500">{review.date}</p>
                     </div>
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
                           className={`h-4 w-4 ${
-                            i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
-                          } transition-colors duration-300`}
+                            i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                          }`}
                         />
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                  <p className="text-gray-700 leading-relaxed">
                     {review.comment}
                   </p>
                 </Card>

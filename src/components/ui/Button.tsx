@@ -30,25 +30,22 @@ const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     primary: [
       'bg-black-primary hover:bg-black-soft',
-      'dark:bg-white-primary dark:hover:bg-gray-100',
-      'text-white-primary dark:text-black-primary',
+      'text-white-primary',
       'shadow-md hover:shadow-lg',
-      'focus:ring-black-primary dark:focus:ring-white-primary',
+      'focus:ring-black-primary',
     ],
     secondary: [
       'bg-white-primary hover:bg-gray-50',
-      'dark:bg-black-primary dark:hover:bg-black-soft',
-      'text-black-primary dark:text-white-primary',
-      'border-2 border-black-primary dark:border-white-primary',
-      'hover:border-black-soft dark:hover:border-gray-200',
-      'focus:ring-black-primary dark:focus:ring-white-primary',
+      'text-black-primary',
+      'border-2 border-black-primary',
+      'hover:border-black-soft',
+      'focus:ring-black-primary',
     ],
     text: [
       'bg-transparent hover:bg-gray-100',
-      'dark:hover:bg-gray-800',
-      'text-black-primary dark:text-white-primary',
-      'hover:text-black-soft dark:hover:text-gray-200',
-      'focus:ring-black-primary dark:focus:ring-white-primary',
+      'text-black-primary',
+      'hover:text-black-soft',
+      'focus:ring-black-primary',
     ],
   }
 

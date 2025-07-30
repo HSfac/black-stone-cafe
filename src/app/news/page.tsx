@@ -98,14 +98,14 @@ const getCategoryName = (categoryId: string) => {
 
 const getCategoryColor = (categoryId: string) => {
   const colors: Record<string, string> = {
-    menu: 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300',
-    event: 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300',
-    store: 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300',
-    notice: 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300',
-    coffee: 'bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300',
-    recruitment: 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300',
+    menu: 'bg-gray-200 text-gray-800',
+    event: 'bg-black text-white',
+    store: 'bg-gray-300 text-black',
+    notice: 'bg-gray-800 text-white',
+    coffee: 'bg-gray-100 text-black',
+    recruitment: 'bg-black text-white',
   }
-  return colors[categoryId] || 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+  return colors[categoryId] || 'bg-gray-100 text-gray-700'
 }
 
 export default function NewsPage() {
@@ -121,7 +121,7 @@ export default function NewsPage() {
 
   if (selectedNews) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+      <div className="min-h-screen bg-white">
         {/* 뉴스 상세 페이지 */}
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-8">
@@ -133,33 +133,33 @@ export default function NewsPage() {
               ← 목록으로 돌아가기
             </Button>
             
-            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(selectedNews.category)} transition-colors duration-300`}>
+            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(selectedNews.category)}`}>
               {getCategoryName(selectedNews.category)}
             </span>
           </div>
           
           <header className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif-kr transition-colors duration-300">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 font-serif-kr">
               {selectedNews.title}
             </h1>
-            <div className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-300">
+            <div className="flex items-center text-gray-600">
               <Calendar className="h-4 w-4 mr-2" />
               {selectedNews.date}
             </div>
           </header>
           
-          <div className="aspect-video relative overflow-hidden rounded-xl mb-8 bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+          <div className="aspect-video relative overflow-hidden rounded-xl mb-8 bg-gray-200">
             {/* 임시 이미지 */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
               <Coffee className="h-20 w-20 text-white opacity-60" />
             </div>
           </div>
           
           <div className="prose max-w-none">
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed transition-colors duration-300">
+            <p className="text-xl text-gray-600 mb-6 leading-relaxed">
               {selectedNews.summary}
             </p>
-            <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 transition-colors duration-300">
+            <div className="text-gray-700 leading-relaxed space-y-4">
               {selectedNews.content.split('\n').map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -171,12 +171,12 @@ export default function NewsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen bg-white">
       {/* 헤더 섹션 */}
-      <section className="relative py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="relative py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <div className="inline-block px-8 py-3 border border-white/50 dark:border-black/50 rounded-full text-white dark:text-black text-sm font-medium mb-8 backdrop-blur-sm transition-colors duration-300">
+            <div className="inline-block px-8 py-3 border border-white/50 rounded-full text-white text-sm font-medium mb-8 backdrop-blur-sm">
               Latest News
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function NewsPage() {
             뉴스 & 소식
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             블랙스톤의 최신 소식과 이벤트 정보를 확인해보세요
           </p>
         </div>
@@ -200,8 +200,8 @@ export default function NewsPage() {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                 selectedCategory === category.id
-                  ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  ? 'bg-black text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               <category.icon className="h-4 w-4" />
@@ -213,25 +213,25 @@ export default function NewsPage() {
         {/* 피처드 뉴스 */}
         {selectedCategory === 'all' && (
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-3xl font-bold text-black mb-8 font-serif-kr">
               주요 소식
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredNews.map((news) => (
                 <Card 
                   key={news.id} 
-                  className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+                  className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200"
                   onClick={() => setSelectedNews(news)}
                 >
-                  <div className="aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+                  <div className="aspect-video relative overflow-hidden bg-gray-200">
                     {/* 임시 이미지 */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
                       <Coffee className="h-16 w-16 text-white opacity-60" />
                     </div>
                     
                     {/* 카테고리 배지 */}
                     <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)} transition-colors duration-300`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)}`}>
                         {getCategoryName(news.category)}
                       </span>
                     </div>
@@ -240,15 +240,15 @@ export default function NewsPage() {
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                   </div>
                   
-                  <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
-                    <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+                  <Card.Body className="p-6 bg-white">
+                    <div className="flex items-center text-gray-500 text-sm mb-3">
                       <Calendar className="h-4 w-4 mr-2" />
                       {news.date}
                     </div>
-                    <h3 className="text-xl font-bold text-black dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-700">
                       {news.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 line-clamp-2 transition-colors duration-300">
+                    <p className="text-gray-600 line-clamp-2">
                       {news.summary}
                     </p>
                   </Card.Body>
@@ -260,7 +260,7 @@ export default function NewsPage() {
 
         {/* 일반 뉴스 */}
         <div>
-          <h2 className="text-3xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+          <h2 className="text-3xl font-bold text-black mb-8 font-serif-kr">
             {selectedCategory === 'all' ? '모든 소식' : getCategoryName(selectedCategory)}
           </h2>
           
@@ -268,18 +268,18 @@ export default function NewsPage() {
             {filteredNews.map((news) => (
               <Card 
                 key={news.id} 
-                className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+                className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200"
                 onClick={() => setSelectedNews(news)}
               >
-                <div className="aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+                <div className="aspect-video relative overflow-hidden bg-gray-200">
                   {/* 임시 이미지 */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
                     <Coffee className="h-12 w-12 text-white opacity-60" />
                   </div>
                   
                   {/* 카테고리 배지 */}
                   <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)} transition-colors duration-300`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(news.category)}`}>
                       {getCategoryName(news.category)}
                     </span>
                   </div>
@@ -288,15 +288,15 @@ export default function NewsPage() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                 </div>
                 
-                <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
-                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+                <Card.Body className="p-6 bg-white">
+                  <div className="flex items-center text-gray-500 text-sm mb-3">
                     <Calendar className="h-4 w-4 mr-2" />
                     {news.date}
                   </div>
-                  <h3 className="text-lg font-bold text-black dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-black mb-3 group-hover:text-gray-700">
                     {news.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 transition-colors duration-300">
+                  <p className="text-gray-600 text-sm line-clamp-2">
                     {news.summary}
                   </p>
                 </Card.Body>
@@ -307,11 +307,11 @@ export default function NewsPage() {
           {/* 결과 없음 */}
           {filteredNews.length === 0 && (
             <div className="text-center py-16">
-              <Coffee className="h-16 w-16 text-gray-400 dark:text-gray-600 mx-auto mb-4 transition-colors duration-300" />
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
+              <Coffee className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
                 해당 카테고리의 소식이 없습니다
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
+              <p className="text-gray-600">
                 다른 카테고리를 선택해보세요
               </p>
             </div>

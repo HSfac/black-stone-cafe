@@ -180,7 +180,7 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="group bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300">
+            <Button size="lg" asChild className="group bg-white text-black hover:bg-gray-100">
               <Link href="/contact" className="flex items-center">
                 창업 문의하기
               </Link>
@@ -189,10 +189,10 @@ export default function HomePage() {
           
           {/* 스크롤 인디케이터 */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="flex flex-col items-center text-white dark:text-black transition-colors duration-300">
+            <div className="flex flex-col items-center text-white">
               <span className="text-sm mb-3 font-medium">더 많은 정보 보기</span>
-              <div className="w-6 h-10 border-2 border-white/60 dark:border-black/60 rounded-full flex justify-center transition-colors duration-300">
-                <div className="w-1 h-3 bg-white/80 dark:bg-black/80 rounded-full mt-2 animate-bounce transition-colors duration-300" />
+              <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-white/80 rounded-full mt-2 animate-bounce" />
               </div>
             </div>
           </div>
@@ -203,10 +203,10 @@ export default function HomePage() {
       <section className="py-32 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 font-serif-kr">
               검증된 브랜드 파워
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               전국 매장 운영 데이터로 입증된 Black Stone의 성공 스토리
             </p>
           </div>
@@ -214,14 +214,14 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 border border-gray-200 dark:border-gray-700">
-                  <div className="w-16 h-16 bg-black dark:bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                    <stat.icon className="h-8 w-8 text-white dark:text-black transition-colors duration-300" />
+                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 border border-gray-200">
+                  <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <stat.icon className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif-kr transition-colors duration-300">
+                  <div className="text-4xl md:text-5xl font-bold text-black mb-4 font-serif-kr">
                     {stat.number}
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium text-lg transition-colors duration-300">
+                  <p className="text-gray-600 font-medium text-lg">
                     {stat.label}
                   </p>
                 </div>
@@ -232,13 +232,13 @@ export default function HomePage() {
       </section>
 
       {/* 브랜드 특징 섹션 */}
-      <section className="py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
               왜 Black Stone일까요?
             </h2>
-            <p className="text-2xl text-gray-200 dark:text-gray-600 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
               성공적인 카페 창업을 위한 모든 것이 준비되어 있습니다
             </p>
           </div>
@@ -246,14 +246,14 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="group text-center">
-                <div className="bg-white/5 dark:bg-black/5 border border-white/10 dark:border-black/10 rounded-2xl p-8 hover:bg-white/10 dark:hover:bg-black/10 hover:border-white/20 dark:hover:border-black/20 transition-all duration-300 group-hover:scale-105">
-                  <div className="w-20 h-20 bg-white dark:bg-black rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition-colors duration-300">
-                    <feature.icon className="h-10 w-10 text-black dark:text-white" />
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group-hover:scale-105">
+                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gray-100">
+                    <feature.icon className="h-10 w-10 text-black" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-6 text-white dark:text-black">
+                  <h3 className="text-2xl font-bold mb-6 text-white">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-200 dark:text-gray-600 leading-relaxed text-lg">
+                  <p className="text-gray-200 leading-relaxed text-lg">
                     {feature.description}
                   </p>
                 </div>
@@ -264,23 +264,23 @@ export default function HomePage() {
       </section>
 
       {/* 인기 메뉴 섹션 */}
-      <section className="py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-32 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <div className="inline-block px-8 py-4 border-2 border-black/10 dark:border-white/10 rounded-full text-black dark:text-white font-semibold text-lg mb-8 transition-colors duration-300">
+            <div className="inline-block px-8 py-4 border-2 border-black/10 rounded-full text-black font-semibold text-lg mb-8">
               시그니처 메뉴
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-5xl md:text-6xl font-bold text-black mb-8 font-serif-kr">
               고객들이 사랑하는 메뉴
             </h2>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Black Stone의 시그니처 메뉴로 특별한 맛의 경험을 선사합니다
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {popularMenus.map((menu) => (
-              <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 dark:border-gray-700 hover:border-black/20 dark:hover:border-white/20">
+              <Card key={menu.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-black/20">
                 <div className="aspect-square relative overflow-hidden">
                   {/* 배지 */}
                   <div className="absolute top-4 left-4 z-20">
@@ -312,21 +312,21 @@ export default function HomePage() {
                   </div>
                 </div>
                 
-                <Card.Body className="p-8 bg-white dark:bg-gray-800 transition-colors duration-300">
+                <Card.Body className="p-8 bg-white">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-black">
                       {menu.name}
                     </h3>
-                    <div className="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full transition-colors duration-300">
-                      <Star className="h-4 w-4 text-black dark:text-white fill-current mr-1 transition-colors duration-300" />
-                      <span className="text-black dark:text-white font-semibold text-sm transition-colors duration-300">{menu.rating}</span>
+                    <div className="flex items-center bg-gray-100 px-3 py-1 rounded-full">
+                      <Star className="h-4 w-4 text-black fill-current mr-1" />
+                      <span className="text-black font-semibold text-sm">{menu.rating}</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg transition-colors duration-300">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-lg">
                     {menu.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-3xl font-bold text-black dark:text-white font-serif-kr transition-colors duration-300">
+                    <span className="text-3xl font-bold text-black font-serif-kr">
                       {formatPrice(menu.price)}
                     </span>
                     <Button variant="secondary" size="sm" asChild>
@@ -341,21 +341,21 @@ export default function HomePage() {
       </section>
 
       {/* 고객 리뷰 섹션 */}
-      <section className="py-32 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-5xl md:text-6xl font-bold text-black mb-8 font-serif-kr">
               고객들의 생생한 후기
             </h2>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Black Stone을 경험한 고객들의 진솔한 이야기를 들어보세요
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review) => (
-              <Card key={review.id} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-                <Card.Body className="p-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+              <Card key={review.id} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
+                <Card.Body className="p-8 bg-gray-50">
                   <div className="flex items-center mb-6">
                     <Image
                       src={review.avatar}
@@ -365,8 +365,8 @@ export default function HomePage() {
                       className="rounded-full mr-4"
                     />
                     <div>
-                      <h4 className="font-bold text-lg text-black dark:text-white transition-colors duration-300">{review.name}</h4>
-                      <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">{review.date}</p>
+                      <h4 className="font-bold text-lg text-black">{review.name}</h4>
+                      <p className="text-gray-500 text-sm">{review.date}</p>
                     </div>
                   </div>
                   
@@ -375,15 +375,15 @@ export default function HomePage() {
                       <Star
                         key={i}
                         className={`h-5 w-5 ${
-                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
-                        } transition-colors duration-300`}
+                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                        }`}
                       />
                     ))}
                   </div>
                   
                   <div className="relative">
-                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-gray-300 dark:text-gray-600 transition-colors duration-300" />
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg pl-6 transition-colors duration-300">
+                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-gray-300" />
+                    <p className="text-gray-700 leading-relaxed text-lg pl-6">
                       {review.review}
                     </p>
                   </div>
@@ -395,15 +395,15 @@ export default function HomePage() {
       </section>
 
       {/* 매장 소개 섹션 */}
-      <section className="py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-32 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+              <h2 className="text-5xl md:text-6xl font-bold text-black mb-8 font-serif-kr">
                 블랙 앤 화이트의<br />
                 미니멀 공간
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed transition-colors duration-300">
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 깔끔하고 세련된 인테리어로 특별한 커피 경험을 선사합니다. 
                 업무나 휴식, 모임 등 다양한 목적에 최적화된 공간을 제공합니다.
               </p>
@@ -411,15 +411,15 @@ export default function HomePage() {
               <div className="space-y-6 mb-10">
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
-                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">무료 Wi-Fi 및 콘센트 제공</span>
+                  <span className="text-lg text-gray-700">무료 Wi-Fi 및 콘센트 제공</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
-                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">조용한 작업 환경</span>
+                  <span className="text-lg text-gray-700">조용한 작업 환경</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-600 mr-4" />
-                  <span className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">프라이빗 미팅룸 예약 가능</span>
+                  <span className="text-lg text-gray-700">프라이빗 미팅룸 예약 가능</span>
                 </div>
               </div>
               
@@ -439,14 +439,14 @@ export default function HomePage() {
               </div>
               
               {/* 플로팅 카드 */}
-              <div className="absolute -bottom-8 -left-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-200">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mr-4 transition-colors duration-300">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
                     <Clock className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <p className="font-bold text-black dark:text-white transition-colors duration-300">매일 오픈</p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300">06:30 - 22:00</p>
+                    <p className="font-bold text-black">매일 오픈</p>
+                    <p className="text-gray-600 text-sm">06:30 - 22:00</p>
                   </div>
                 </div>
               </div>
@@ -456,20 +456,20 @@ export default function HomePage() {
       </section>
 
       {/* 최신 뉴스 섹션 */}
-      <section className="py-32 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8 font-serif-kr transition-colors duration-300">
+            <h2 className="text-5xl md:text-6xl font-bold text-black mb-8 font-serif-kr">
               최신 소식
             </h2>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Black Stone의 새로운 소식과 이벤트를 확인해보세요
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {latestNews.map((news) => (
-              <Card key={news.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
+              <Card key={news.id} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
                 <div className="aspect-video relative overflow-hidden">
                   <Image
                     src={news.image}
@@ -478,18 +478,18 @@ export default function HomePage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-sm font-semibold transition-colors duration-300">
+                    <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {news.category}
                     </span>
                   </div>
                 </div>
                 
-                <Card.Body className="p-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">{news.date}</p>
-                  <h3 className="text-xl font-bold text-black dark:text-white mb-3 line-clamp-2 transition-colors duration-300">
+                <Card.Body className="p-6 bg-gray-50">
+                  <p className="text-gray-500 text-sm mb-3">{news.date}</p>
+                  <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
                     {news.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 transition-colors duration-300">
+                  <p className="text-gray-600 line-clamp-2 mb-4">
                     {news.summary}
                   </p>
                   <Button variant="text" size="sm" asChild>
@@ -509,12 +509,12 @@ export default function HomePage() {
       </section>
 
       {/* CTA 섹션 */}
-      <section className="py-32 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section className="py-32 bg-black text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 font-serif-kr">
             함께 성장할 파트너를 찾습니다
           </h2>
-          <p className="text-2xl text-gray-200 dark:text-gray-600 mb-12 leading-relaxed transition-colors duration-300">
+          <p className="text-2xl text-gray-200 mb-12 leading-relaxed">
             검증된 브랜드 파워와 체계적인 시스템으로<br />
             성공적인 창업의 첫 걸음을 시작하세요
           </p>
@@ -526,7 +526,7 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="group bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300">
+            <Button size="lg" asChild className="group bg-white text-black hover:bg-gray-100">
               <Link href="/franchise" className="flex items-center">
                 가맹점 정보 보기
               </Link>

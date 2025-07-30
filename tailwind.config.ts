@@ -6,7 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
+
   theme: {
     extend: {
       colors: {
@@ -45,11 +45,11 @@ const config: Config = {
         info: '#3b82f6',
       },
       fontFamily: {
-        'sans-kr': ['Noto Sans KR', 'sans-serif'],
-        'serif-kr': ['Noto Serif KR', 'serif'],
-        'sans-en': ['Helvetica Neue', 'Arial', 'sans-serif'],
-        'serif-en': ['Times New Roman', 'serif'],
-        'mono': ['JetBrains Mono', 'Consolas', 'monospace'],
+        'sans-kr': ['"Noto Sans KR"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+        'serif-kr': ['"Noto Serif KR"', 'Georgia', 'serif'],
+        'sans-en': ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+        'serif-en': ['"Times New Roman"', 'serif'],
+        'mono': ['"JetBrains Mono"', 'Consolas', 'monospace'],
       },
       fontSize: {
         '6xl': '3.75rem',  // 60px

@@ -62,32 +62,32 @@ export default function StorePage() {
             
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                  <MapPin className="h-6 w-6 text-blue-600" />
+                              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <MapPin className="h-6 w-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-black dark:text-white mb-2 transition-colors duration-300">주소</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">{storeInfo.address}</p>
+                  <h3 className="text-xl font-bold text-black mb-2">주소</h3>
+                  <p className="text-gray-600 leading-relaxed">{storeInfo.address}</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Phone className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-black dark:text-white mb-2 transition-colors duration-300">연락처</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg transition-colors duration-300">{storeInfo.phone}</p>
+                  <h3 className="text-xl font-bold text-black mb-2">연락처</h3>
+                  <p className="text-gray-600 text-lg">{storeInfo.phone}</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Clock className="h-6 w-6 text-amber-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-black dark:text-white mb-2 transition-colors duration-300">운영시간</h3>
-                  <div className="text-gray-600 dark:text-gray-300 space-y-1 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-black mb-2">운영시간</h3>
+                  <div className="text-gray-600 space-y-1">
                     <p className="text-lg">평일: <span className="font-semibold">{storeInfo.hours.weekday}</span></p>
                     <p className="text-lg">주말: <span className="font-semibold">{storeInfo.hours.weekend}</span></p>
                     <p className="text-lg">공휴일: <span className="font-semibold">{storeInfo.hours.holiday}</span></p>
@@ -108,12 +108,12 @@ export default function StorePage() {
           
           {/* 지도 영역 */}
           <div>
-            <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-3xl flex items-center justify-center shadow-xl transition-colors duration-300">
-              <div className="text-center text-gray-500 dark:text-gray-400 transition-colors duration-300">
+            <div className="aspect-square bg-gray-200 rounded-3xl flex items-center justify-center shadow-xl">
+              <div className="text-center text-gray-500">
                 <MapPin className="h-20 w-20 mx-auto mb-6" />
                 <p className="text-2xl font-bold mb-2">매장 위치</p>
                 <p className="text-lg">강남역 3번 출구 도보 5분</p>
-                <p className="text-sm mt-4 text-gray-400 dark:text-gray-500">지도 API 연동 예정</p>
+                <p className="text-sm mt-4 text-gray-400">지도 API 연동 예정</p>
               </div>
             </div>
           </div>
@@ -122,24 +122,24 @@ export default function StorePage() {
         {/* 시설 안내 */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl font-bold text-black mb-6 font-serif-kr">
               시설 안내
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               편안하고 쾌적한 환경에서 최고의 커피를 즐겨보세요
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {storeInfo.facilities.map((facility, index) => (
-              <Card key={index} className="text-center p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <facility.icon className="h-8 w-8 text-black dark:text-white transition-colors duration-300" />
+              <Card key={index} className="text-center p-8 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <facility.icon className="h-8 w-8 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {facility.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                <p className="text-gray-600 leading-relaxed">
                   {facility.description}
                 </p>
               </Card>
@@ -150,29 +150,29 @@ export default function StorePage() {
         {/* 매장 갤러리 */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl font-bold text-black mb-6 font-serif-kr">
               매장 갤러리
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               블랙스톤 카페의 세련된 공간을 미리 만나보세요
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryImages.map((image) => (
-              <Card key={image.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-                <div className="aspect-[4/3] relative overflow-hidden bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+              <Card key={image.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
+                <div className="aspect-[4/3] relative overflow-hidden bg-gray-200">
                   {/* 임시 이미지 */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
                     <Coffee className="h-16 w-16 text-white opacity-60" />
                   </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                 </div>
-                <Card.Body className="p-6 bg-white dark:bg-gray-900 transition-colors duration-300">
-                  <h3 className="text-lg font-bold text-black dark:text-white mb-2 transition-colors duration-300">
+                <Card.Body className="p-6 bg-white">
+                  <h3 className="text-lg font-bold text-black mb-2">
                     {image.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                  <p className="text-gray-600">
                     {image.description}
                   </p>
                 </Card.Body>
@@ -182,47 +182,47 @@ export default function StorePage() {
         </section>
 
         {/* 오시는 길 */}
-        <section className="bg-gray-50 dark:bg-gray-900 rounded-3xl p-12 transition-colors duration-300">
+        <section className="bg-gray-50 rounded-3xl p-12">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-6 font-serif-kr transition-colors duration-300">
+            <h2 className="text-4xl font-bold text-black mb-6 font-serif-kr">
               오시는 길
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <p className="text-xl text-gray-600">
               다양한 교통수단으로 편리하게 방문하세요
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <Card className="p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">지하철</h3>
-              <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <Card className="p-8 border border-gray-200 bg-white">
+              <h3 className="text-2xl font-bold text-black mb-6">지하철</h3>
+              <div className="space-y-3 text-gray-600">
                 <p className="text-lg">• 2호선 강남역 3번 출구에서 도보 5분</p>
                 <p className="text-lg">• 9호선 신논현역 1번 출구에서 도보 7분</p>
                 <p className="text-lg">• 신분당선 강남역에서 도보 6분</p>
               </div>
             </Card>
             
-            <Card className="p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">버스</h3>
-              <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <Card className="p-8 border border-gray-200 bg-white">
+              <h3 className="text-2xl font-bold text-black mb-6">버스</h3>
+              <div className="space-y-3 text-gray-600">
                 <p className="text-lg">• 간선버스: 146, 740, 341, 360</p>
                 <p className="text-lg">• 지선버스: 3412, 4419, 6411</p>
                 <p className="text-lg">• 정류장: 강남역 정류장에서 하차</p>
               </div>
             </Card>
             
-            <Card className="p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">자동차</h3>
-              <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <Card className="p-8 border border-gray-200 bg-white">
+              <h3 className="text-2xl font-bold text-black mb-6">자동차</h3>
+              <div className="space-y-3 text-gray-600">
                 <p className="text-lg">• 강남대로 → 테헤란로 진입</p>
                 <p className="text-lg">• 블랙스톤 빌딩 지하 주차장 이용</p>
                 <p className="text-lg">• 주차 요금: 최초 2시간 무료</p>
               </div>
             </Card>
             
-            <Card className="p-8 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">주의사항</h3>
-              <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <Card className="p-8 border border-gray-200 bg-white">
+              <h3 className="text-2xl font-bold text-black mb-6">주의사항</h3>
+              <div className="space-y-3 text-gray-600">
                 <p className="text-lg">• 러시아워 시간대는 대중교통 이용 권장</p>
                 <p className="text-lg">• 주차공간 한정으로 미리 확인 필요</p>
                 <p className="text-lg">• 발렛파킹 서비스 제공 (유료)</p>

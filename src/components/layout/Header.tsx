@@ -137,12 +137,12 @@ const Header: React.FC = () => {
   return (
     <header className="sticky top-4 z-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="relative bg-white/90 dark:bg-black/90 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl shadow-black/20 dark:shadow-black/40 hover:shadow-3xl hover:bg-white/95 dark:hover:bg-black/95 transition-all duration-500 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/30 before:to-transparent before:pointer-events-none dark:before:from-white/15">
+        <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl border border-white/40 shadow-2xl shadow-black/20 hover:shadow-3xl hover:bg-white/95 transition-all duration-500 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/30 before:to-transparent before:pointer-events-none">
           <div className="flex justify-between items-center h-16 px-6">
             {/* 로고 */}
             <Link href="/" className="flex items-center space-x-2">
-              <Coffee className="h-8 w-8 text-black-primary dark:text-white-primary transition-colors duration-300" />
-              <span className="text-2xl font-bold text-black-primary dark:text-white-primary font-sans-kr transition-colors duration-300">
+              <Coffee className="h-8 w-8 text-black-primary" />
+              <span className="text-2xl font-bold text-black-primary font-sans-kr">
                 블랙스톤
               </span>
             </Link>
@@ -156,8 +156,8 @@ const Header: React.FC = () => {
                   className={cn(
                     "text-base font-medium transition-colors duration-fast",
                     pathname === item.href
-                      ? "text-black-primary dark:text-white-primary border-b-2 border-black-primary dark:border-white-primary"
-                      : "text-gray-600 dark:text-gray-300 hover:text-black-primary dark:hover:text-white-primary"
+                      ? "text-black-primary border-b-2 border-black-primary"
+                      : "text-gray-600 hover:text-black-primary"
                   )}
                 >
                   {item.name}
@@ -174,7 +174,7 @@ const Header: React.FC = () => {
             <div className="md:hidden">
               <button
                 type="button"
-                className="p-2 rounded-lg text-black-primary dark:text-white-primary hover:bg-white/40 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 dark:focus:ring-white/30 backdrop-blur-sm transition-all duration-300"
+                className="p-2 rounded-lg text-black-primary hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm transition-all duration-300"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {isOpen ? (
@@ -190,7 +190,7 @@ const Header: React.FC = () => {
         {/* 모바일 메뉴 */}
         {isOpen && (
           <div className="md:hidden mt-2">
-            <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl rounded-xl border border-white/40 dark:border-white/20 shadow-2xl shadow-black/20 dark:shadow-black/40 p-4 space-y-2 transition-all duration-500 before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-br before:from-white/30 before:to-transparent before:pointer-events-none dark:before:from-white/15 relative">
+            <div className="bg-white/95 backdrop-blur-xl rounded-xl border border-white/40 shadow-2xl shadow-black/20 p-4 space-y-2 transition-all duration-500 before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-br before:from-white/30 before:to-transparent before:pointer-events-none relative">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -198,8 +198,8 @@ const Header: React.FC = () => {
                   className={cn(
                     "block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300",
                     pathname === item.href
-                      ? "text-black-primary dark:text-white-primary bg-white/60 dark:bg-white/10 shadow-sm"
-                      : "text-gray-600 dark:text-gray-300 hover:text-black-primary dark:hover:text-white-primary hover:bg-white/40 dark:hover:bg-white/5"
+                      ? "text-black-primary bg-white/60 shadow-sm"
+                      : "text-gray-600 hover:text-black-primary hover:bg-white/40"
                   )}
                   onClick={() => setIsOpen(false)}
                 >

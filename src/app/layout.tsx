@@ -1,22 +1,9 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingBanner from '@/components/ui/FloatingBanner'
 import { ThemeProvider } from '@/contexts/ThemeContext'
-
-const notoSansKR = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-noto-sans-kr',
-})
-
-const notoSerifKR = Noto_Serif_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-noto-serif-kr',
-})
 
 export const metadata: Metadata = {
   title: '블랙스톤 카페 - 프리미엄 커피 전문점',
@@ -52,32 +39,17 @@ export default function RootLayout({
   return (
     <html 
       lang="ko" 
-      className={`${notoSansKR.variable} ${notoSerifKR.variable} dark`}
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.classList.add('light');
-                  } else {
-                    document.documentElement.classList.remove('light');
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {
-                  document.documentElement.classList.add('dark');
-                }
-              })()
-            `,
-          }}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" 
+          rel="stylesheet" 
         />
       </head>
-      <body className="font-sans-kr antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 min-h-screen">
+      <body className="font-sans-kr antialiased bg-white text-black min-h-screen">
         <ThemeProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
